@@ -1,0 +1,27 @@
+<div class="card card-body col-10 center">
+    <form>
+        <h2>Agregar nuevo Recurso:</h2>
+        Titulo:
+        <div class="form-group">
+            <input type="text" name="content" [(ngModel)]="resource.title" class="form-control">
+        </div>
+        Descripcion:
+        <div class="form-group">
+            <input type="text" name="content" [(ngModel)]="resource.description" class="form-control">
+        </div>
+        Autor: <br>
+        Lenguaje:
+        <div class="form-group">
+            <select name="type" [(ngModel)]="resource.language">
+                <option [value]="language" *ngFor="let language of languages">{{language}}</option>
+            </select>
+        </div>
+        Etiquetas:<br>
+
+        Recurso:
+        <div class="form-group">
+            <input type="file" (change)="setEvent($event)" name="file" class="form-control">
+        </div>
+        <button (click)='addResource()'> Guardar Recurso</button>
+    </form>
+</div>
