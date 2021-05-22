@@ -34,8 +34,15 @@ export class ResourceService {
     return this.resources;
   }
 
+  findResourceByID(id: string) {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME);
+    return this.resourcesCollection.doc(id).valueChanges();
+  }
+
+
   addResource(resource: Resources) {
     this.resourcesCollection = this.db.collection(this.COLLECTION_NAME);
+    resource.creationDate = new Date();
     this.resourcesCollection.add(resource);
   }
 

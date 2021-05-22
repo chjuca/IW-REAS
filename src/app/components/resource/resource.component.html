@@ -1,0 +1,43 @@
+<div class="container">
+    <h2>{{resource.title}}</h2>
+    <h5>Descripción: </h5>
+    <p>{{resource.description}}</p>
+    <h5>Lenguaje:</h5>
+    <p>{{resource.language}}</p>
+    <h5>Fecha de publicacion:</h5>
+    <p>{{resource.creationDate?.seconds * 1000 | date: "dd/MM/yy h:mm" }}</p>
+    <h5>Tags: </h5>
+    <small>{{resource.keywords}}</small>
+    <hr>
+    <h5>Comentarios: </h5>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" [(ngModel)]="comment.body" placeholder="Escribe un comentario"
+            aria-label="Escribe un comentario" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button (click)='addComment()' class="btn btn-success" type="button">Comentar</button>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <div *ngIf="comments.length > 0; else nocomments">
+            <div *ngFor="let comment of comments">
+                <div class="pl-3 pr-3">
+                    <p class="text-justify">{{comment.body}}</p>
+                    <div class="justify-content-end">
+                        <small><strong>{{comment.user}}</strong></small>
+                        <!-- <pre> | </pre> -->
+                        <!-- <small>{{comment.creationDate?.seconds *1000 | date: 'dd/MM/yyyy hh:mm a'}}</small> -->
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <ng-template #nocomments>
+            <div class="justify-content-center align-content-center">
+                <p class="text-center">Aún no ha registrado ningun comentario</p>
+            </div>
+        </ng-template>
+    </div>
+
+
+</div>

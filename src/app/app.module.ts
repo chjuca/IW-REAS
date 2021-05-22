@@ -13,11 +13,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material';
+import { ResourcesComponent } from './components/resources/resources.component';
+import { ResourceComponent } from './components/resource/resource.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ResourceFormComponent
+    ResourceFormComponent,
+    ResourcesComponent,
+    ResourceComponent
   ],
   imports: [
     BrowserModule,

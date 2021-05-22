@@ -30,8 +30,7 @@ export class ResourceFormComponent implements OnInit {
 
   addResource() {
     this.resource.keywords = this.keywords;
-    // this.resourceService.onUpload(this.resource, this.event);
-    console.log(this.resource)
+    this.resourceService.onUpload(this.resource, this.event);
   }
 
   setEvent(e: any) {
