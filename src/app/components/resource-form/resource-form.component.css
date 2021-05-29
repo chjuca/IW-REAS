@@ -27,3 +27,8 @@
 label {
   font-weight: bold;
 }
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #003f72;
+}

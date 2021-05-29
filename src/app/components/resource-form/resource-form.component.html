@@ -107,13 +107,19 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Recurso:</label>
                     <div class="col-sm-6">
-                        <input type="file" (change)="setEvent($event)" name="file" class="form-control">
+                        <input #inputFile type="file" (change)="setEvent($event)" name="file" class="form-control">
                     </div>
                 </div>
                 <br>
+                <br>
                 <div class="form-group row">
-                    <div class="col-sm-10">
-                        <button (click)='addResource()' class="btn bottom-utpl">Guardar Recurso</button>
+                    <div class="col-2">
+                        <button (click)='addResource()' class="btn bottom-utpl" [disabled]="validateForm()">Guardar
+                            Recurso</button>
+                    </div>
+                    <div class="col-1" *ngIf="uploadPercent!=100">
+                        <mat-progress-spinner [value]=" uploadPercent" [diameter]="45" [strokeWidth]="7">
+                        </mat-progress-spinner>
                     </div>
                 </div>
             </form>

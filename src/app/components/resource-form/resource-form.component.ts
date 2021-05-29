@@ -1,6 +1,6 @@
 import { ResourceService } from './../../services/resource.service';
 import { Resources } from './../../models/resources.interface';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 
@@ -11,10 +11,10 @@ import { MatChipInputEvent } from '@angular/material/chips';
   encapsulation: ViewEncapsulation.None
 })
 export class ResourceFormComponent implements OnInit {
+  @ViewChild('inputFile', { static: false }) myInputVariable: ElementRef;
 
   // LISTS
   languages = ['Español', 'Inglés', 'Portugués', 'Alemán']
-
   keywords = [];
   // LISTS
 
@@ -22,6 +22,7 @@ export class ResourceFormComponent implements OnInit {
   resource = {} as Resources;
   resources = [];
   event: any;
+  uploadPercent = 0;
 
   constructor(public resourceService: ResourceService) { }
 
@@ -31,14 +32,35 @@ export class ResourceFormComponent implements OnInit {
   addResource() {
     this.resource.keywords = this.keywords;
     this.resourceService.onUpload(this.resource, this.event);
+    this.resourceService.uploadPercent.subscribe(uploadPercent => {
+      this.uploadPercent = uploadPercent;
+      if (this.uploadPercent == 100) {
+        this.resource = {} as Resources;
+        this.keywords = [];
+        this.myInputVariable.nativeElement.value = '';
+      }
+    })
   }
 
   setEvent(e: any) {
     this.event = e;
   }
 
+  validateForm(): boolean {
+    if (this.resource.title && this.resource.description && this.resource.language && (this.keywords.length > 0)) {
+      if (this.event) {
+        return false
+      } else {
+        return true;
+      }
+    }
+    else {
+      return true;
+    }
+  }
 
-  // PARAAAAA LAS KEYWORD
+
+  // PARA LAS KEYWORD
 
   visible = true;
   selectable = true;
