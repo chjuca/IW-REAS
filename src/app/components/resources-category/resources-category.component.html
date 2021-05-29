@@ -1,0 +1,8 @@
+<div class="container p-5">
+
+    <select [(ngModel)]="titulationSelected" (ngModelChange)="showTitulation()" class="form-select form-select-lg mb-3"
+        aria-label=".form-select-lg example">
+        <option *ngFor="let titulation of titulations" [ngValue]="titulation.name">
+            {{titulation.name}}</option>
+    </select>
+</div>

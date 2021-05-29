@@ -15,13 +15,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material';
 import { ResourcesComponent } from './components/resources/resources.component';
 import { ResourceComponent } from './components/resource/resource.component';
+import { HomeComponent } from './components/home/home.component';
+import { ResourcesCategoryComponent } from './components/resources-category/resources-category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResourceFormComponent,
     ResourcesComponent,
-    ResourceComponent
+    ResourceComponent,
+    HomeComponent,
+    ResourcesCategoryComponent
   ],
   imports: [
     BrowserModule,
