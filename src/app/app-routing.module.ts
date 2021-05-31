@@ -9,7 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent          // dividirse y maquetar
   },
   {
     path: 'resource-form',
@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'resources',
-    component: ResourcesComponent
+    component: ResourcesComponent     // Cards agrupar en 3 o 4 por columna
   },
   {
     path: 'resource/:id',

@@ -17,6 +17,7 @@ export class ResourcesComponent implements OnInit {
   constructor(public resourceService: ResourceService, public router: Router) { }
 
   ngOnInit() {
+    this.resources = [];
     this.subscription = this.resourceService.findAllResources().subscribe(resources => { this.resources = resources })
   }
 
@@ -26,6 +27,7 @@ export class ResourcesComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.resources = [];
   }
 
 }
