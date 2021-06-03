@@ -17,6 +17,7 @@ import { ResourcesComponent } from './components/resources/resources.component';
 import { ResourceComponent } from './components/resource/resource.component';
 import { HomeComponent } from './components/home/home.component';
 import { ResourcesCategoryComponent } from './components/resources-category/resources-category.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { ResourcesCategoryComponent } from './components/resources-category/reso
     MatChipsModule,
     MatFormFieldModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
