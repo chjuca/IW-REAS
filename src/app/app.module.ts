@@ -17,6 +17,7 @@ import { ResourcesComponent } from './components/resources/resources.component';
 import { ResourceComponent } from './components/resource/resource.component';
 import { HomeComponent } from './components/home/home.component';
 import { ResourcesCategoryComponent } from './components/resources-category/resources-category.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -40,6 +41,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatFormFieldModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    NgImageSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
