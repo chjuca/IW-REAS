@@ -5,6 +5,8 @@ import { ResourceService } from './../../services/resource.service';
 import { Subscription } from 'rxjs';
 import { Resources } from './../../models/resources.interface';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-resource',
@@ -19,8 +21,7 @@ export class ResourceComponent implements OnInit {
   //========== COMMENTS ==========
   comment = {} as Comments;
   comments = [];
-
-  constructor(public resourceService: ResourceService, public commentService: CommentsService, public router: Router, public route: ActivatedRoute) { }
+  constructor(public resourceService: ResourceService, public commentService: CommentsService, public router: Router, public route: ActivatedRoute, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -41,4 +42,11 @@ export class ResourceComponent implements OnInit {
     this.commentService.addComment(this.comment, this.resource.id);
     this.comment = {};
   }
+/*
+  open(contenido) {
+    this.modalService.open(contenido, { centered: true });
+    console.log("El método accede")
+  }*/
+
+
 }

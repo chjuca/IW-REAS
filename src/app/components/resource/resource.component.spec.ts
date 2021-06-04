@@ -22,4 +22,6 @@ describe('ResourceComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });
