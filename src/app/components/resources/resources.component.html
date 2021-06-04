@@ -3,8 +3,8 @@
         <div class="pb-3">
             <h2><strong> Proyectos </strong> </h2>
         </div>
-        <div class="card-group">
-            <div class="card zoom" *ngFor="let resource of resources">
+        <div class="card-group" *ngFor="let resources of result">
+            <div class="card zoom p-1" *ngFor="let resource of resources">
                 <a [routerLink]="" (click)='showResource(resource)'>
                     <img class="card-img-top"
                         src="https://d500.epimg.net/cincodias/imagenes/2016/02/09/pymes/1455008801_208461_1455008979_noticia_normal.jpg"
@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{resource.title}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{resource.keywords}}</h6>
-                        <p class="card-text">{{resource.description}}</p>
+                        <p class="card-text">{{resource.description.substr(0, 250) + '...'}}</p>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">{{resource.creationDate.seconds * 1000 | date: "dd/MM/yy
