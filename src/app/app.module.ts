@@ -19,6 +19,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ResourcesCategoryComponent } from './components/resources-category/resources-category.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ResourcesComponent,
     ResourceComponent,
     HomeComponent,
-    ResourcesCategoryComponent
+    ResourcesCategoryComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

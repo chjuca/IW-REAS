@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="bg-image"></div>
+
+    <div class="bg-container">
+        <div class="card card-container rounded">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                <small id="emailHelp" class="form-text text-muted">Tus datos nunca serán compartidos con terceros  <br></small>
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" class="form-control mt-4" placeholder="example@utpl.edu.ec" required autofocus>       
+                <input type="password" id="inputPassword" class="form-control mt-3" placeholder="*******" required>
+                <button class="special rounded-pill h6 mt-4" data-bs-toggle="modal" type="submit"
+                    data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Sign In&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+            </form><!-- /form -->
+            <a href="" class="forgot-password">
+                Olvide mi contraseña
+            </a>
+            <p>No posee cuenta? <a href="/register"  class="forgot-password">Registrate aquí</a></p>
+        </div><!-- /card-container -->
+    </div>
+
+</body>
+
+</html>
