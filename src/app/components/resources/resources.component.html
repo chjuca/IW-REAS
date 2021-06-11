@@ -12,10 +12,10 @@
                     <div class="card-body">
                         <h5 class="card-title">{{resource.title}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{resource.keywords}}</h6>
-                        <p class="card-text">{{resource.description.substr(0, 250) + '...'}}</p>
+                        <p class="card-text">{{resource.description?.substr(0, 250) + '...'}}</p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">{{resource.creationDate.seconds * 1000 | date: "dd/MM/yy
+                        <small class="text-muted">{{resource.creationDate?.seconds * 1000 | date: "dd/MM/yy
                             h:mm"}}</small>
                     </div>
                 </a>

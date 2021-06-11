@@ -13,7 +13,6 @@ export class ResourcesComponent implements OnInit {
 
   resources = [];
   subscription: Subscription;
-  resourcesThree = [];
   current = []
   result = []
 
@@ -21,8 +20,13 @@ export class ResourcesComponent implements OnInit {
   constructor(public resourceService: ResourceService, public router: Router) { }
 
   ngOnInit() {
+    this.result = [];
+    this.current = []
     this.resources = [];
     this.subscription = this.resourceService.findAllResources().subscribe(resources => {
+      this.result = [];
+      this.current = []
+      this.resources = [];
       resources.forEach(resource => {
         if (this.current.length == 3) {
           this.current.push(resource);
@@ -38,7 +42,6 @@ export class ResourcesComponent implements OnInit {
         }
       }
       this.result.push(this.current);
-      console.log(this.result);
     })
 
   }
@@ -49,6 +52,8 @@ export class ResourcesComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.result = [];
+    this.current = []
     this.resources = [];
   }
 
