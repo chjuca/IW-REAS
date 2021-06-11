@@ -39,7 +39,6 @@ export class ResourceService {
     return this.resourcesCollection.doc(id).valueChanges();
   }
 
-
   addResource(resource: Resources) {
     this.resourcesCollection = this.db.collection(this.COLLECTION_NAME);
     resource.creationDate = new Date();
@@ -78,4 +77,33 @@ export class ResourceService {
       console.log("ERRRROR, debe agregar un recurso educativo")
     }
   }
+
+  //============================
+  // FILTROS DE LOS RECURSOS
+  //============================
+
+  findAllResourcesByCategory(category: String) {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where('category', '==', category));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.resources;
+  }
+
+  findAllResourcesByKeyword(keyword: String) {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where("keywords", "array-contains", keyword));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.resources;
+  }
+
 }

@@ -34,7 +34,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><strong>Guardar</strong></button>
+                    <button type="button" class="btn btn-warning"
+                        data-bs-dismiss="modal"><strong>Guardar</strong></button>
                 </div>
             </div>
         </div>
@@ -91,8 +92,6 @@
             </div>
         </div>
     </div>
-    hr
-
 
     <hr>
     <div class="container">
@@ -124,17 +123,17 @@
                                             style="color: black; opacity: 0.6; font-size: smaller;">{{comment.creationDate?.seconds
                                             *1000 | date: 'dd/MM/yyyy hh:mm a'}}</small>
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
+            <ng-template #nocomments>
+                <div class="justify-content-center align-content-center p-5">
+                    <p class="text-center">Aún no ha registrado ningun comentario</p>
+                </div>
+            </ng-template>
         </div>
     </div>
 

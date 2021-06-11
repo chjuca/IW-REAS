@@ -2,7 +2,9 @@ export interface Resources {
     id?: string;
     title?: string;
     description?: string;
-    author?: string,
+    authors?: string[],
+    type?: string;
+    category?: string;
     language?: string,
     keywords?: string[];
     fieldKnowledge?: string;
