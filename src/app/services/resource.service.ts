@@ -106,4 +106,17 @@ export class ResourceService {
     return this.resources;
   }
 
+  findAllresourcesOrderByCreatedAt() {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.orderBy('creationDate', 'desc').limit(5));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+
+    return this.resources;
+  }
+
 }
