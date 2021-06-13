@@ -1,0 +1,37 @@
+<div class="container-fluid p-5">
+    <div class="container-fluid">
+        <div class="bg-blue row p-2">
+            <div class="col">
+                UTPL
+            </div>
+            <div class="col">
+                Administrador
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="card-group" *ngFor="let resources of result">
+            <div class="card zoom p-1" *ngFor="let resource of resources">
+                <img class="card-img-top" src="{{resource.banner}}" alt="{{resource.title}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{resource.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{resource.keywords}}</h6>
+                    <p class="card-text">{{resource.description?.substr(0, 250)}}</p>
+                </div>
+                <div class="card-footer" *ngIf="resource.title != undefined">
+                    <small class="text-muted">{{resource.creationDate?.seconds * 1000 | date: "dd/MM/yy
+                        hh:mm"}}</small>
+                    <div class="column align-content-center">
+                        <button type="button" class="btn btn-warning buttom-utpl m-3"
+                            (click)="showResource(resource)">VER
+                            RECURSO</button>
+                        <button type="button" class="btn btn-success m-3" (click)="publicResource(resource)">
+                            PUBLICAR
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
