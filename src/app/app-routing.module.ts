@@ -1,3 +1,4 @@
+import { ResourcesPublicComponent } from './components/resources-public/resources-public.component';
 import { ResourcesCategoryComponent } from './components/resources-category/resources-category.component';
 import { HomeComponent } from './components/home/home.component';
 import { ResourceComponent } from './components/resource/resource.component';
@@ -9,15 +10,11 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent          // dividirse y maquetar
-  },
-  {
-    path: 'resource-form',
-    component: ResourceFormComponent
+    component: HomeComponent
   },
   {
     path: 'resources',
-    component: ResourcesComponent     // Cards agrupar en 3 o 4 por columna
+    component: ResourcesComponent
   },
   {
     path: 'resource/:id',
@@ -26,6 +23,17 @@ const routes: Routes = [
   {
     path: 'category/:category',
     component: ResourcesCategoryComponent
+  },
+
+  // RUTAS DE ADMIN
+
+  {
+    path: 'admin/resources',
+    component: ResourcesPublicComponent
+  },
+  {
+    path: 'admin/resource-form',
+    component: ResourceFormComponent
   },
 
 ];

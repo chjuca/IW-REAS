@@ -60,8 +60,8 @@ export class HomeComponent implements OnInit {
       resources.forEach(resource => {
         this.resourcesCreationDate.push({
           id: resource.id,
-          image: "http://www.bioblog.com.br/wp-content/uploads/2017/02/o-que-e-biologia.jpg",
-          thumbImage: 'http://www.bioblog.com.br/wp-content/uploads/2017/02/o-que-e-biologia.jpg',
+          image: resource.banner,
+          thumbImage: resource.banner,
           title: resource.title,
           alt: resource.title
         })

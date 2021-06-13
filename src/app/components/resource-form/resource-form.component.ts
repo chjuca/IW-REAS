@@ -55,6 +55,8 @@ export class ResourceFormComponent implements OnInit {
       if (this.uploadPercent == 100) {
         this.resource = {} as Resources;
         this.keywords = [];
+        this.authors = [];
+        this.category = {};
         this.myInputVariable.nativeElement.value = '';
       }
     })
