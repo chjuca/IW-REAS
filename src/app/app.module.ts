@@ -18,9 +18,10 @@ import { ResourceComponent } from './components/resource/resource.component';
 import { HomeComponent } from './components/home/home.component';
 import { ResourcesCategoryComponent } from './components/resources-category/resources-category.component';
 import { NgImageSliderModule } from 'ng-image-slider';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -45,9 +46,12 @@ import { RegisterComponent } from './components/register/register.component';
     MatFormFieldModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    NgImageSliderModule
+    NgImageSliderModule,
+    AngularFireAuthModule,
   ],
-  providers: [],
+  providers: [
+    AuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

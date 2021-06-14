@@ -16,12 +16,12 @@
             <h2 style="text-align:center; " class="mb-4">Registro</h2>
             <form class="form-signin">
                 <label for="">Correo electronico</label>
-                <input type="email" id="inputEmail" class="form-control mt-4" placeholder="example@utpl.edu.ec" required autofocus>       
+                <input type="email" id="inputEmail" class="form-control mt-4" [(ngModel)]="email" name="email" placeholder="example@utpl.edu.ec" required autofocus>       
                 <label for="">Contraseña</label>
-                <input type="password" id="inputPassword" class="form-control mt-3" placeholder="*******" required>
+                <input type="password" id="inputPassword" class="form-control mt-3" [(ngModel)]="password" name="passowrd" placeholder="*******" required>
                 <label for="">Confirmar contraseña</label>
-                <input type="password" id="inputPassword" class="form-control mt-3" placeholder="*******" required>
-                <button class="special rounded-pill h6 mt-4" data-bs-toggle="modal" type="submit"
+                <input type="password" id="inputPasswordConf" class="form-control mt-3" placeholder="*******" required>
+                <button (click)="signUp()" class="special rounded-pill h6 mt-4" data-bs-toggle="modal" type="submit"
                     data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Registrar&nbsp;&nbsp;&nbsp;&nbsp;</button>
 
             </form><!-- /form -->
