@@ -18,9 +18,14 @@ import { ResourceComponent } from './components/resource/resource.component';
 import { HomeComponent } from './components/home/home.component';
 import { ResourcesCategoryComponent } from './components/resources-category/resources-category.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AuthenticationService } from './services/authentication.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ResourcesPublicComponent } from './components/resources-public/resources-public.component';
 import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
+
 
 
 @NgModule({
@@ -31,6 +36,10 @@ import { UserNavbarComponent } from './components/user-navbar/user-navbar.compon
     ResourceComponent,
     HomeComponent,
     ResourcesCategoryComponent,
+    LoginComponent,
+    RegisterComponent,
+    ResourcesPublicComponent,
+    
     ResourcesPublicComponent,
     UserNavbarComponent
   ],
@@ -46,9 +55,12 @@ import { UserNavbarComponent } from './components/user-navbar/user-navbar.compon
     MatFormFieldModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    NgImageSliderModule
+    NgImageSliderModule,
+    AngularFireAuthModule,
   ],
-  providers: [],
+  providers: [
+    AuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
