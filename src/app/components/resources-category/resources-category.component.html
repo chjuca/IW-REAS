@@ -1,8 +1,57 @@
-<div class="container p-5">
-
-    <select [(ngModel)]="titulationSelected" (ngModelChange)="showTitulation()" class="form-select form-select-lg mb-3"
+<br>
+<div class="bg-image redhat d-flex flex-row align-items-center img-1">
+    <div style="width: 70%; margin-left: auto;margin-right: auto;">
+        <div >
+            <input class="form-control rounded-pill" type="text" placeholder="Ingrese un tema..." style="width: 100%">
+        </div>
+    </div>
+</div>
+<div class="container p-5 cats">
+    <select [(ngModel)]="titulationSelected" (ngModelChange)="showTitulation()" class="form-select form-select-lg mb-3 btnw"
         aria-label=".form-select-lg example">
         <option *ngFor="let titulation of titulations" [ngValue]="titulation.name">
             {{titulation.name}}</option>
     </select>
 </div>
+<body class="" style="margin-left: 12em; margin-right: 12em;">
+    <div class="row align-items-center" style="padding: 0.5em;">
+        <div href="#" class="card col align-items-center" style="width: 18rem;">
+            <img src="https://www.prensalibre.com/wp-content/uploads/2020/01/Metas-2020-Alimentaci%C3%B3n-Saludable.jpg?quality=82" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+            </div>
+        </div>
+        <div class="card col align-items-center" style="width: 18rem; margin-left: 1em;">
+            <img src="https://www.prensalibre.com/wp-content/uploads/2020/01/Metas-2020-Alimentaci%C3%B3n-Saludable.jpg?quality=82" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+            </div>
+        </div>
+        <div class="card col align-items-center" style="width: 18rem; margin-left: 1em;">
+            <img src="https://www.prensalibre.com/wp-content/uploads/2020/01/Metas-2020-Alimentaci%C3%B3n-Saludable.jpg?quality=82" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center" style="padding: 0.5em;">
+        <div class="card col align-items-center" style="width: 18rem;">
+            <img src="https://www.prensalibre.com/wp-content/uploads/2020/01/Metas-2020-Alimentaci%C3%B3n-Saludable.jpg?quality=82" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+            </div>
+        </div>
+        <div class="card col align-items-center" style="width: 18rem; margin-left: 1em;">
+            <img src="https://www.prensalibre.com/wp-content/uploads/2020/01/Metas-2020-Alimentaci%C3%B3n-Saludable.jpg?quality=82" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+            </div>
+        </div>
+        <div class="card col align-items-center" style="width: 18rem; margin-left: 1em;">
+            <img src="https://www.prensalibre.com/wp-content/uploads/2020/01/Metas-2020-Alimentaci%C3%B3n-Saludable.jpg?quality=82" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+            </div>
+        </div>
+    </div>
+</body>

@@ -20,6 +20,8 @@ import { ResourcesCategoryComponent } from './components/resources-category/reso
 import { NgImageSliderModule } from 'ng-image-slider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ResourcesPublicComponent } from './components/resources-public/resources-public.component';
+import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ResourcesPublicComponent } from './components/resources-public/resource
     ResourceComponent,
     HomeComponent,
     ResourcesCategoryComponent,
-    ResourcesPublicComponent
+    ResourcesPublicComponent,
+    UserNavbarComponent
   ],
   imports: [
     BrowserModule,
