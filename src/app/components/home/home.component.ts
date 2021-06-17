@@ -3,6 +3,8 @@ import { ResourceService } from './../../services/resource.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgImageSliderComponent } from 'ng-image-slider';
+import { Category } from './../../models/category.interface';
+import { CategoryService } from './../../services/category.service';
 
 @Component({
   selector: 'app-home',

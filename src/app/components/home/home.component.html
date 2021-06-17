@@ -1,6 +1,4 @@
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700&display=swap" rel="stylesheet">
-<header>
+<!-- <header>
     <div>
         <nav class="navbar navbar-light" style="background-color: #003F72;">
             <a class="navbar-brand redhatbold">UTPL</a>
@@ -10,15 +8,14 @@
             </form>
         </nav>
     </div>
-</header>
+</header> -->
 
-<div class="bg-image centered redhat img-1">
-    <div>
+<div class="bg-image redhat d-flex flex-row align-items-center img-1">
+    <div style="width: 70%; margin-left: auto;margin-right: auto;">
         <h2>Repositorio</h2>
         <h1>REAS</h1>
-        <div lass="col-sm-6">
-            <input class="form-control rounded-pill" type="text" placeholder="Ingrese un tema..."
-                aria-label="default input example" style="width: 50em;">
+        <div >
+            <input class="form-control rounded-pill" type="text" placeholder="Ingrese un tema..." style="width: 100%">
         </div>
     </div>
 </div>
@@ -67,15 +64,15 @@
     </div>
     <div class="col-9">
         <br>
-        <h2 class="redhab">Recursos más vistos</h2>
+        <h2 class="redhab">Recursos mejor calificados</h2>
         <ng-image-slider [images]="imageObject" [imagePopup]="false"
             [imageSize]="{width: '300px', height: '200px', space: 4}" #nav>
         </ng-image-slider>
         <h2 class="redhab">Recursos recientes</h2>
         <ng-image-slider [images]="resourcesCreationDate" [imagePopup]="false"
-            [imageSize]="{width: '300px', height: '200px', space: 4}" (imageClick)="clickImageCreationDate($event)"
-            #nav>
-        </ng-image-slider>
+        [imageSize]="{width: '300px', height: '200px', space: 4}" (imageClick)="clickImageCreationDate($event)"#nav>
+    </ng-image-slider>
+
     </div>
 </div>
 <div>
@@ -94,9 +91,8 @@
         </div>
     </div>
 </div>
-<footer class="text-center text-lg-start bg-image text-muted fnt img-3">
+<footer class="text-center text-lg-start bg-image text-muted fnt img-3 ">
     <section>
-        <br>
         <div class="container text-center text-md-start mt-5 mgrt">
             <div class="row mt-3">
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">

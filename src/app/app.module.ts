@@ -24,6 +24,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthenticationService } from './services/authentication.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ResourcesPublicComponent } from './components/resources-public/resources-public.component';
+import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
+
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { ResourcesPublicComponent } from './components/resources-public/resource
     RegisterComponent,
     ResourcesPublicComponent,
     
+    ResourcesPublicComponent,
+    UserNavbarComponent
   ],
   imports: [
     BrowserModule,
