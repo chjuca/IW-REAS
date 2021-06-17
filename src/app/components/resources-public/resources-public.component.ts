@@ -1,21 +1,20 @@
 import { Resources } from './../../models/resources.interface';
-import { ResourceService } from './../../services/resource.service';
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { ResourceService } from './../../services/resource.service';
+import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-resources',
-  templateUrl: './resources.component.html',
-  styleUrls: ['./resources.component.css']
+  selector: 'app-resources-public',
+  templateUrl: './resources-public.component.html',
+  styleUrls: ['./resources-public.component.css']
 })
-export class ResourcesComponent implements OnInit {
+export class ResourcesPublicComponent implements OnInit {
 
   resources = [];
   subscription: Subscription;
   current = []
   result = []
-
 
   constructor(public resourceService: ResourceService, public router: Router) { }
 
@@ -23,7 +22,7 @@ export class ResourcesComponent implements OnInit {
     this.result = [];
     this.current = []
     this.resources = [];
-    this.subscription = this.resourceService.findAllResources().subscribe(resources => {
+    this.subscription = this.resourceService.findAllResourcesIsNoPublic().subscribe(resources => {
       this.result = [];
       this.current = []
       this.resources = [];
@@ -38,16 +37,19 @@ export class ResourcesComponent implements OnInit {
       });
       if (this.current.length != 0) {
         for (let i = this.current.length; i < 4; i++) {
-          this.current.push({});
+          this.current.push({ description: "" });
         }
       }
       this.result.push(this.current);
     })
-
   }
 
   showResource(resource: Resources) {
     this.router.navigate(['resource', resource.id]);
+  }
+
+  publicResource(resource: Resources) {
+    this.resourceService.publicResource(resource);
   }
 
   ngOnDestroy() {

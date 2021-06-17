@@ -1,6 +1,10 @@
+import { Subscription } from 'rxjs';
+import { ResourceService } from './../../services/resource.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgImageSliderComponent } from 'ng-image-slider';
+import { Category } from './../../models/category.interface';
+import { CategoryService } from './../../services/category.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +12,11 @@ import { NgImageSliderComponent } from 'ng-image-slider';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  @ViewChild('nav', {static: false}) slider: NgImageSliderComponent;
+  @ViewChild('nav', { static: false }) slider: NgImageSliderComponent;
+
+  subscription: Subscription;
+  resources = [];
+  resourcesCreationDate = [];
 
   imageObject: Array<object> = [{
     image: 'https://i.ibb.co/CJ5XxkT/14.jpg',
@@ -45,13 +53,30 @@ export class HomeComponent implements OnInit {
     order: 1 //Optional: if you pass this key then slider images will be arrange according @input: slideOrderType
   }
   ];
-  constructor(public router: Router) { }
+
+
+  constructor(public resourceService: ResourceService, public router: Router) { }
 
   ngOnInit() {
+    this.subscription = this.resourceService.findAllresourcesOrderByCreatedAt().subscribe(resources => {
+      resources.forEach(resource => {
+        this.resourcesCreationDate.push({
+          id: resource.id,
+          image: resource.banner,
+          thumbImage: resource.banner,
+          title: resource.title,
+          alt: resource.title
+        })
+      });
+    })
   }
 
   showResourcesByCategory(category: string) {
     this.router.navigate(['category', category]);
+  }
+
+  clickImageCreationDate(event) {
+    this.router.navigate(['resource', this.resourcesCreationDate[event].id]);
   }
 
 }

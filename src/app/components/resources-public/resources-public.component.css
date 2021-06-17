@@ -9,17 +9,6 @@
   font-size: xx-large;
 }
 
-.zoom {
-  transition: transform 0.4s; /* Animation */
-}
-
-.zoom:hover {
-  transform: scale(
-    0.9
-  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-  opacity: 0.8;
-}
-
 a:link {
   text-decoration: none;
   color: inherit;
@@ -38,4 +27,10 @@ a:hover {
 a:active {
   text-decoration: none;
   color: inherit;
+}
+
+.buttom-utpl {
+  background-color: #eaab00;
+  color: #003f72;
+  font-weight: bold;
 }

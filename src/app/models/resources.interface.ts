@@ -1,8 +1,11 @@
 export interface Resources {
     id?: string;
     title?: string;
+    banner?: string;
     description?: string;
-    author?: string,
+    authors?: string[],
+    type?: string;
+    category?: string;
     language?: string,
     keywords?: string[];
     fieldKnowledge?: string;
@@ -13,4 +16,5 @@ export interface Resources {
     creationDate?: Date;
     url?: string;
     updateDate?: Date;
+    isPublic?: boolean;
 }

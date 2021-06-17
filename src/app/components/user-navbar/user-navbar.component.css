@@ -1,0 +1,23 @@
+.butyell{
+    background-color:#F3B926; 
+    width:8em;
+    color:#003F72;
+}
+.butblu{
+    background-color:#003F72; 
+    color: #FFFF; 
+    padding: 1em;
+    margin-left: 5em;
+}
+.redhat{
+    font-family: 'Red Hat Display', sans-serif;
+    color: #FFFF;
+}
+.redhatbold{
+    font-family: 'Red Hat Display';
+    font-weight: 700;
+    font-size: 2em; 
+    color: #FFFF;
+    padding: 0.3em;
+    margin-left: 0.3em;
+}

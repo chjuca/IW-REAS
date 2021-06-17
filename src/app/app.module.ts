@@ -19,7 +19,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ResourcesCategoryComponent } from './components/resources-category/resources-category.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CategoryResourcesComponent } from './components/category-resources/category-resources.component';
+import { ResourcesPublicComponent } from './components/resources-public/resources-public.component';
+import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { CategoryResourcesComponent } from './components/category-resources/cate
     ResourceComponent,
     HomeComponent,
     ResourcesCategoryComponent,
-    CategoryResourcesComponent
+    ResourcesPublicComponent,
+    UserNavbarComponent
   ],
   imports: [
     BrowserModule,

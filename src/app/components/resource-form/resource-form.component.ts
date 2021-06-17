@@ -1,3 +1,6 @@
+import { Category } from './../../models/category.interface';
+import { Subscription } from 'rxjs';
+import { CategoryService } from './../../services/category.service';
 import { ResourceService } from './../../services/resource.service';
 import { Resources } from './../../models/resources.interface';
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
@@ -13,30 +16,47 @@ import { MatChipInputEvent } from '@angular/material/chips';
 export class ResourceFormComponent implements OnInit {
   @ViewChild('inputFile', { static: false }) myInputVariable: ElementRef;
 
+
+  subscription: Subscription;
+
   // LISTS
   languages = ['Español', 'Inglés', 'Portugués', 'Alemán']
   keywords = [];
+  authors = [];
+  categories = [];
+  subcategories = [];
+  types = ['Video', 'Documento', 'Aplicacion', 'Paper']
   // LISTS
 
 
   resource = {} as Resources;
+  category = {} as Category;
   resources = [];
   event: any;
   uploadPercent = 0;
+  author = '';
+  subcategory = '';
 
-  constructor(public resourceService: ResourceService) { }
+  constructor(public resourceService: ResourceService, public categoryService: CategoryService) { }
 
   ngOnInit() {
+    this.subscription = this.categoryService.getCategories().subscribe(categories => {
+      this.categories = categories;
+    })
   }
 
   addResource() {
     this.resource.keywords = this.keywords;
+    this.resource.authors = this.authors;
     this.resourceService.onUpload(this.resource, this.event);
+    console.log(this.resource);
     this.resourceService.uploadPercent.subscribe(uploadPercent => {
       this.uploadPercent = uploadPercent;
       if (this.uploadPercent == 100) {
         this.resource = {} as Resources;
         this.keywords = [];
+        this.authors = [];
+        this.category = {};
         this.myInputVariable.nativeElement.value = '';
       }
     })
@@ -57,6 +77,25 @@ export class ResourceFormComponent implements OnInit {
     else {
       return true;
     }
+  }
+
+  addAuthor() {
+    this.authors.push(this.author);
+    this.author = '';
+  }
+
+  removeAuthor(author: string) {
+    for (let i = 0; i < this.authors.length; i++) {
+      if (this.authors[i] === author) {
+        this.authors.splice(i, 1);
+      }
+    }
+  }
+
+  selectCategoryChange() {
+    this.subscription = this.categoryService.getTitulationsByCategory(this.category.id).subscribe(subcategories => {
+      this.subcategories = subcategories;
+    });
   }
 
 
