@@ -33,19 +33,20 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><strong>Guardar</strong></button>
+                    <button type="button" class="btn btn-warning"
+                        data-bs-dismiss="modal"><strong>Guardar</strong></button>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <a href="/resources" class="previous round mt-5">&#8249;</a>
+        <br>
     </div>
     <div class="container">
         <div class="row  ">
             <div class="col-6 mt-3">
-                <h2>Nombre de la categoria</h2>
+                <h2>{{resource.category}}</h2>
             </div>
             <div class="col-4 mt-3">
                 <p font style="color: black; opacity: 0.6; font-size: smaller; font-weight: 500;">
@@ -63,7 +64,8 @@
             <h4 style="color: black;">{{resource.title}}</h4>
         </div>
         <div class="col-5 mt-2">
-            <h6 style="color: black; opacity: 0.6;">Dr. Carlos Homero Juca Viteri</h6>
+            <li *ngFor="let author of resource.authors" style="color: black; opacity: 0.6;">{{author}}</li>
+            <!-- <h6 *ngFor="let author of resource.authors" style="color: black; opacity: 0.6;">{{author}}</h6> -->
             <hr>
         </div>
     </div>
@@ -73,7 +75,8 @@
                 <h4>Abstract</h4>
                 <span class="">{{resource.description}}</span>
                 <hr>
-                <a href="" *ngFor="let item of resource.keywords">&nbsp;{{item}}&nbsp;</a>
+                <a [routerLink]="" (click)="clickKeyword(item)"
+                    *ngFor="let item of resource.keywords">&nbsp;{{item}}&nbsp;</a>
                 <div class="d-flex flex-row justify-content-center mt-3">
                     <div></div>
                     <div class="p-3"><button class="special rounded-pill h6" data-bs-toggle="modal"
@@ -90,8 +93,6 @@
             </div>
         </div>
     </div>
-    hr
-
 
     <hr>
     <div class="container">
@@ -123,17 +124,17 @@
                                             style="color: black; opacity: 0.6; font-size: smaller;">{{comment.creationDate?.seconds
                                             *1000 | date: 'dd/MM/yyyy hh:mm a'}}</small>
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
+            <ng-template #nocomments>
+                <div class="justify-content-center align-content-center p-5">
+                    <p class="text-center">Aún no ha registrado ningun comentario</p>
+                </div>
+            </ng-template>
         </div>
     </div>
 

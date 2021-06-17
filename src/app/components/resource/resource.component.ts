@@ -42,11 +42,17 @@ export class ResourceComponent implements OnInit {
     this.commentService.addComment(this.comment, this.resource.id);
     this.comment = {};
   }
-/*
-  open(contenido) {
-    this.modalService.open(contenido, { centered: true });
-    console.log("El método accede")
-  }*/
+
+  clickKeyword(item) {
+    // this.resourceService.findAllResourcesByKeyword(item).subscribe(resources => {
+    //   console.log(resources)
+    // })
+  }
+  /*
+    open(contenido) {
+      this.modalService.open(contenido, { centered: true });
+      console.log("El método accede")
+    }*/
 
 
 }

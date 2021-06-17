@@ -24,6 +24,13 @@
                     data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Sign In&nbsp;&nbsp;&nbsp;&nbsp;</button>
 
             </form><!-- /form -->
+
+            <div *ngIf="entry; else elseBlock" class="alert alert-success" role="alert">
+                Acceso correcto
+            </div>
+            <div *ngIf="entry==''" class="alert alert-danger" role="alert">
+                {{mensaje}}
+            </div>
             <a href="" class="forgot-password">
                 Olvide mi contraseña
             </a>

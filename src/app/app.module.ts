@@ -22,6 +22,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthenticationService } from './services/authentication.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ResourcesPublicComponent } from './components/resources-public/resources-public.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { AuthenticationService } from './services/authentication.service';
     HomeComponent,
     ResourcesCategoryComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ResourcesPublicComponent,
+    
   ],
   imports: [
     BrowserModule,

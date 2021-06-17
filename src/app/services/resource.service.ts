@@ -17,10 +17,17 @@ export class ResourceService {
   resources: Observable<Resources[]>;
   resource = {} as Resources;
   COLLECTION_NAME = 'resources'
-
+  banners = {
+    "Medicina": "https://hospitalveugenia.com/wp-content/uploads/2015/10/Videos-de-salud-Vimeo-Hospital-Victoria-Eugenia-Sevilla-1280x720.jpg",
+    "Enfermiria": "http://blogs.upn.edu.pe/salud/wp-content/uploads/sites/7/2016/11/upn_blog_sal_tareas-profesionales-enfermer%C3%ADa_28-nov.jpg",
+    "Contabilidad": "https://www.certus.edu.pe/blog/wp-content/uploads/2019/01/Contabilidad-empezar-tu-carrera-CERTUS-1200x720.jpg",
+    "Derecho": "https://concepto.de/wp-content/uploads/2012/03/derecho-ley-e1552664252875.jpg",
+    "Electronica y Telecomunicaciones": "https://concepto.de/wp-content/uploads/2018/08/electronica-estudios-e1534781588887.jpg",
+    "Sistemas Informaticos y computacion": "https://www.galdon.com/wp-content/uploads/2013/05/profesion-informatica-galdon-software-1024x576.jpg"
+  };
 
   constructor(private db: AngularFirestore, private storage: AngularFireStorage) {
-    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME);
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where('isPublic', '==', true));
     this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Resources;
@@ -39,15 +46,22 @@ export class ResourceService {
     return this.resourcesCollection.doc(id).valueChanges();
   }
 
-
   addResource(resource: Resources) {
     this.resourcesCollection = this.db.collection(this.COLLECTION_NAME);
     resource.creationDate = new Date();
+    resource.banner = this.banners[resource.category];
+    resource.isPublic = false;
     this.resourcesCollection.add(resource);
   }
 
   updateResource(resource: Resources) {
     this.resourcesDocument = this.db.collection(this.COLLECTION_NAME).doc(`${resource.id}`);
+    this.resourcesDocument.update(resource);
+  }
+
+  publicResource(resource: Resources) {
+    this.resourcesDocument = this.db.collection(this.COLLECTION_NAME).doc(`${resource.id}`);
+    resource.isPublic = true
     this.resourcesDocument.update(resource);
   }
 
@@ -78,4 +92,59 @@ export class ResourceService {
       console.log("ERRRROR, debe agregar un recurso educativo")
     }
   }
+
+  //============================
+  // FILTROS DE LOS RECURSOS
+  //============================
+
+
+  findAllResourcesIsNoPublic() {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where('isPublic', '==', false));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.resources;
+  }
+
+  findAllResourcesByCategory(category: String) {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where('category', '==', category).where('isPublic', '==', true));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.resources;
+  }
+
+  findAllResourcesByKeyword(keyword: String) {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where("keywords", "array-contains", keyword).where('isPublic', '==', true));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.resources;
+  }
+
+  findAllresourcesOrderByCreatedAt() {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where('isPublic', '==', true).orderBy('creationDate', 'desc').limit(5));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+
+    return this.resources;
+  }
+
 }

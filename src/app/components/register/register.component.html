@@ -16,16 +16,38 @@
             <h2 style="text-align:center; " class="mb-4">Registro</h2>
             <form class="form-signin">
                 <label for="">Correo electronico</label>
-                <input type="email" id="inputEmail" class="form-control mt-4" [(ngModel)]="email" name="email" placeholder="example@utpl.edu.ec" required autofocus>       
+                <input type="email" id="inputEmail" class="form-control mt-4" [(ngModel)]="email" name="email"
+                    placeholder="example@utpl.edu.ec"   #offEmail="ngModel" required autofocus>
+                
                 <label for="">Contraseña</label>
-                <input type="password" id="inputPassword" class="form-control mt-3" [(ngModel)]="password" name="passowrd" placeholder="*******" required>
+
+                <input type="password" id="inputPassword" class="form-control mt-3" required
+                    [(ngModel)]="password" name="passowrd" placeholder="*******">
                 <label for="">Confirmar contraseña</label>
-                <input type="password" id="inputPasswordConf" class="form-control mt-3" placeholder="*******" required>
-                <button (click)="signUp()" class="special rounded-pill h6 mt-4" data-bs-toggle="modal" type="submit"
-                    data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Registrar&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                <input type="password" id="inputPasswordConf" class="form-control mt-3" required
+                    [(ngModel)]="confPassword" name="confPassword" placeholder="*******">
+
+                <button (click)="validatePassword()" class="special rounded-pill h6 mt-4" data-bs-toggle="modal"
+                    type="submit"
+                    data-bs-target="#registerUser">&nbsp;&nbsp;&nbsp;&nbsp;Registrar&nbsp;&nbsp;&nbsp;&nbsp;</button>
 
             </form><!-- /form -->
-            <p>Ya tienes cuenta? <a  class="forgot-password" href="/login">Iniciar sesión</a></p>
+
+                <div *ngIf="created; else elseBlock">
+                    <div class="alert alert-success" role="alert">
+                        {{mensaje}}
+                      <meta http-equiv="refresh" content="3; url=/login"> 
+                        
+                    </div>
+                </div>
+
+                <div *ngIf="created==''" class="alert alert-warning" role="alert">
+                    {{mensaje}}
+                </div>
+
+   
+            <p>Ya tienes cuenta? <a class="forgot-password" href="/login">Iniciar sesión</a></p>
         </div><!-- /card-container -->
     </div>
 
