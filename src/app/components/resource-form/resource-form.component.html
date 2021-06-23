@@ -1,0 +1,128 @@
+<div class="container-fluid p-5">
+    <div class="container-fluid">
+        <div class="bg-blue row p-2">
+            <div class="col">
+                UTPL
+            </div>
+            <div class="col">
+                Administrador
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="container-sm bg-white">
+            <h3 class="font-blue">Nuevo Recurso</h3>
+            <br>
+            <form>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Nombre del Recurso:</label>
+                    <div class="col-sm-6">
+                        <input type="text" [(ngModel)]="resource.title" class="form-control" name="name"
+                            placeholder="Nombre del Recurso">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Descripción:</label>
+                    <div class="col-sm-6">
+                        <textarea name="message" [(ngModel)]="resource.description" class="form-control"
+                            aria-label="With textarea"></textarea>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Lenguaje:</label>
+                    <div class="col-sm-6">
+                        <select class="form-select" aria-label=".form-select-sm example" name="type"
+                            [(ngModel)]="resource.language" [ngModelOptions]="{standalone: true}">
+                            <option [value]="language" *ngFor="let language of languages">{{language}}</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Etiquetas:</label>
+                    <div class="col-sm-9">
+                        <mat-form-field class="chip-list">
+                            <mat-label> Inserte una etiqueta </mat-label>
+                            <mat-chip-list #chipList>
+                                <mat-chip *ngFor="let keyword of keywords" [selectable]="selectable"
+                                    [removable]="removable" (removed)="remove(keyword)">
+                                    {{keyword}}
+                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                </mat-chip>
+                                <input type="text" placeholder="Biologia, Matematica, Informatica"
+                                    [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                    [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+                            </mat-chip-list>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Categoria:</label>
+                    <div class="col-sm-4">
+                        <select class="form-select" aria-label=".form-select-sm example" name="type"
+                            [(ngModel)]="category" [ngModelOptions]="{standalone: true}"
+                            (ngModelChange)="selectCategoryChange()">
+                            <option [ngValue]="category" *ngFor="let category of categories">{{category.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-select" aria-label=".form-select-sm example" name="type"
+                            [(ngModel)]="resource.category" [ngModelOptions]="{standalone: true}">
+                            <option [value]="subcategory.name" *ngFor="let subcategory of subcategories">
+                                {{subcategory.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Autor/es:</label>
+                    <div class="col-sm-5">
+                        <input type="text" [(ngModel)]="author" class="form-control" name="name"
+                            placeholder="Nombre del Autor">
+                        <br>
+                        <ul *ngFor="let author of authors">
+                            <li (click)="removeAuthor(author)">{{author + " ❌"}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2">
+                        <button (click)='addAuthor()' class="btn bottom-utpl">Agregar Autor</button>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Recurso:</label>
+                    <div class="col-sm-6">
+                        <input #inputFile type="file" (change)="setEvent($event)" name="file" class="form-control">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Tipo de Recurso:</label>
+                    <div class="col-sm-6">
+                        <select class="form-select" aria-label=".form-select-sm example" name="type"
+                            [(ngModel)]="resource.type" [ngModelOptions]="{standalone: true}">
+                            <option [value]="type" *ngFor="let type of types">{{type}}</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <button (click)='addResource()' class="btn bottom-utpl" [disabled]="validateForm()">Guardar
+                            Recurso</button>
+                    </div>
+                    <div class="col-1" *ngIf="uploadPercent!=100">
+                        <mat-progress-spinner [value]=" uploadPercent" [diameter]="45" [strokeWidth]="7">
+                        </mat-progress-spinner>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

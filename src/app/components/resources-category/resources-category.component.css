@@ -1,0 +1,77 @@
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.redhat {
+  font-family: "Red Hat Display", sans-serif;
+  color: #ffff;
+}
+.btnw {
+  background-color: white;
+  color: #003f72;
+  border-color: white;
+  font-size: 1.6em;
+}
+.cats {
+  width: 40%;
+}
+
+.bg-color {
+  background-color: #00828c;
+}
+
+.bg-blue {
+  background-color: #003f72;
+  color: white;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.buttom-utpl {
+  background-color: #eaab00;
+  color: #003f72;
+  font-weight: bold;
+}
+
+.bg-color {
+  background-color: #00828c;
+}
+
+.bg-blue {
+  background-color: #003f72;
+  color: white;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.zoom {
+  transition: transform 0.4s; /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(
+    0.9
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  opacity: 0.8;
+}
+
+a:link {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:active {
+  text-decoration: none;
+  color: inherit;
+}

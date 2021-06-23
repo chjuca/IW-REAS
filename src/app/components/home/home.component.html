@@ -1,0 +1,135 @@
+<!-- <header>
+    <div>
+        <nav class="navbar navbar-light" style="background-color: #003F72;">
+            <a class="navbar-brand redhatbold">UTPL</a>
+            <form class="form-inline">
+                <button class="btn rounded-pill redhat butyell" type="submit">Iniciar Sesión</button>
+                <button class="btn rounded-pill redhat butblu" type="submit">Registrarse</button>
+            </form>
+        </nav>
+    </div>
+</header> -->
+
+<div class="bg-image redhat d-flex flex-row align-items-center img-1">
+    <div style="width: 70%; margin-left: auto;margin-right: auto;">
+        <h2>Repositorio</h2>
+        <h1>REAS</h1>
+        <div >
+            <input class="form-control rounded-pill" type="text" placeholder="Ingrese un tema..." style="width: 100%">
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-3 ybox redhab ">
+        <section class="mlf">
+            <h3>Áreas</h3>
+            <h4>Educación Básica</h4>
+            <ul>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("health-area")'>Area de Salud</a></li>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("technical-area")'>Area de Tecnica</a></li>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("socio-humanistic-area")'>Area de Salud</a></li>
+            </ul>
+            <h4>Educación Secundaria</h4>
+            <ul>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("health-area")'>Area de Salud</a></li>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("technical-area")'>Area de Tecnica</a></li>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("socio-humanistic-area")'>Area de Salud</a></li>
+            </ul>
+            <h4>Educación Universitaria</h4>
+            <ul>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("health-area")'>Area de Salud</a></li>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("technical-area")'>Area de Tecnica</a></li>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("socio-humanistic-area")'>Area de Salud</a></li>
+            </ul>
+            <ul>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("health-area")'>Area de Salud</a></li>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("technical-area")'>Area de Tecnica</a></li>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("socio-humanistic-area")'>Area de Salud</a></li>
+            </ul>
+        </section>
+
+    </div>
+    <div class="col-9">
+        <br>
+        <h2 class="redhab">Recursos mejor calificados</h2>
+        <ng-image-slider [images]="imageObject" [imagePopup]="false"
+            [imageSize]="{width: '300px', height: '200px', space: 4}" #nav>
+        </ng-image-slider>
+        <h2 class="redhab">Recursos recientes</h2>
+        <ng-image-slider [images]="resourcesCreationDate" [imagePopup]="false"
+        [imageSize]="{width: '300px', height: '200px', space: 4}" (imageClick)="clickImageCreationDate($event)"#nav>
+    </ng-image-slider>
+
+    </div>
+</div>
+<div>
+    <div class="centered bg-image redhat img-2">
+        <div class="col-sm-3" style="text-align: center;">
+            <h3>+1000</h3>
+            <h4>RECURSOS</h4>
+        </div>
+        <div class="col-sm-3" style="text-align: center;">
+            <h3>+1000</h3>
+            <h4>ESTUDIANTES</h4>
+        </div>
+        <div class="col-sm-3" style="text-align: center;">
+            <h3>+1000</h3>
+            <h4>MULTIMEDIA</h4>
+        </div>
+    </div>
+</div>
+<footer class="text-center text-lg-start bg-image text-muted fnt img-3 ">
+    <section>
+        <div class="container text-center text-md-start mt-5 mgrt">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase redhatbold mb-4">
+                        <h2>UTPL</h2>
+                    </h6>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 wh">
+                    <h6 class="text-uppercase fw-bold mb-4 wh">
+                        Contactos
+                    </h6>
+                    <p><i class="fas fa-home me-3"></i>San Cayetano Alto - Loja</p>
+                    <p><i class="fas fa-home me-3"></i>Centros UTPL</p>
+                    <p><i class="fas fa-home me-3"></i>Buzón de consultas</p>
+                    <p><i class="fas fa-home me-3"></i>1800 88 75 88</p>
+                    <p><i class="fas fa-home me-3"></i>WhatsApp: 099 956 5400</p>
+                    <p><i class="fas fa-home me-3"></i>PBX: 07 370 1444</p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 wh">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Vínculos de interés
+                    </h6>
+                    <p><i class="fas fa-home me-3"></i>Decide ser más</p>
+                    <p><i class="fas fa-home me-3"></i>Admisiones</p>
+                    <p><i class="fas fa-home me-3"></i>Noticias</p>
+                    <p><i class="fas fa-home me-3"></i>Trabaja con nosotros</p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 wh">
+                    <p><i class="fas fa-home me-3"></i></p>
+                    <p><i class="fas fa-home me-3"></i>Eventos</p>
+                    <p><i class="fas fa-home me-3"></i>Alumni</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="text-center p-4 wh">
+        © 2021 Copyright:
+        <a class="text-reset fw-bold" href="https://www.utpl.edu.ec">Universidad Técnica Particular de Loja</a>
+    </div>
+</footer>

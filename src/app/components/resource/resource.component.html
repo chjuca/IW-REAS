@@ -1,0 +1,141 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700&display=swap" rel="stylesheet">
+
+
+
+<body>
+
+    <div class="modal fade" id="evaluateResource" tabindex="-1" aria-labelledby="evaluateResource" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="evaluateResourceLabel">Evalua este recurso</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- InModal  -->
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="rate">
+                            <input type="radio" id="star5" name="rate" value="5" />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="rate" value="4" />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="rate" value="3" />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="rate" value="2" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="rate" value="1" />
+                            <label for="star1" title="text">1 star</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-warning"
+                        data-bs-dismiss="modal"><strong>Guardar</strong></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <br>
+    </div>
+    <div class="container">
+        <div class="row  ">
+            <div class="col-6 mt-3">
+                <h2>{{resource.category}}</h2>
+            </div>
+            <div class="col-4 mt-3">
+                <p font style="color: black; opacity: 0.6; font-size: smaller; font-weight: 500;">
+                    {{resource.creationDate?.seconds * 1000 | date: "dd/MM/yy" }}</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+        </div>
+        <div class="col-6 mt-2">
+            <h4 style="color: black;">{{resource.title}}</h4>
+        </div>
+        <div class="col-5 mt-2">
+            <li *ngFor="let author of resource.authors" style="color: black; opacity: 0.6;">{{author}}</li>
+            <!-- <h6 *ngFor="let author of resource.authors" style="color: black; opacity: 0.6;">{{author}}</h6> -->
+            <hr>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-7">
+                <h4>Abstract</h4>
+                <span class="">{{resource.description}}</span>
+                <hr>
+                <a [routerLink]="" (click)="clickKeyword(item)"
+                    *ngFor="let item of resource.keywords">&nbsp;{{item}}&nbsp;</a>
+                <div class="d-flex flex-row justify-content-center mt-3">
+                    <div></div>
+                    <div class="p-3"><button class="special rounded-pill h6" data-bs-toggle="modal"
+                            data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Calificar&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    </div>
+
+                    <div class="p-3"><button
+                            class="special rounded-pill h6">&nbsp;&nbsp;&nbsp;Descargar&nbsp;&nbsp;&nbsp;</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5 mt-2">
+                <img src={{resource.url}} class="img-fluid max-width: 100%; rounded mx-auto" alt="">
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="container">
+        <h4 class="mb-3">Comentarios</h4>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" [(ngModel)]="comment.body" placeholder="Escribe un comentario"
+                aria-label="Escribe un comentario" aria-describedby="basic-addon2">
+            <div class="input-group-append ml-5">
+                <button (click)='addComment()' class="rounded btn btn-success" type="button">Comentar</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div *ngIf="comments.length > 0; else nocomments">
+                <div *ngFor="let comment of comments">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-1 mt-3">
+                                <div class=""><img src="https://i.imgur.com/Ur43esv.jpg" alt="user" width="100%"
+                                        class="rounded-circle ">
+                                </div>
+                            </div>
+                            <div class="col-11 ">
+                                <div class="commentback rounded-lg mt-4">
+                                    <div class="p-4">
+                                        <p><strong> {{comment.user}}</strong></p>
+                                        <p class="text-justify">{{comment.body}}</p>
+                                        <small
+                                            style="color: black; opacity: 0.6; font-size: smaller;">{{comment.creationDate?.seconds
+                                            *1000 | date: 'dd/MM/yyyy hh:mm a'}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #nocomments>
+                <div class="justify-content-center align-content-center p-5">
+                    <p class="text-center">Aún no ha registrado ningun comentario</p>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+
+</body>

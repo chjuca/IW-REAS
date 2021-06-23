@@ -1,0 +1,34 @@
+.chip-list {
+  width: 50%;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-blue {
+  background-color: #003f72;
+  color: white;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.bottom-utpl {
+  background-color: #eaab00;
+  color: #003f72;
+  font-weight: bold;
+}
+
+.font-blue {
+  color: #003f72;
+  font-weight: bold;
+}
+
+label {
+  font-weight: bold;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #003f72;
+}

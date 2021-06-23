@@ -1,0 +1,36 @@
+.bg-color {
+  background-color: #00828c;
+}
+
+.bg-blue {
+  background-color: #003f72;
+  color: white;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+a:link {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.buttom-utpl {
+  background-color: #eaab00;
+  color: #003f72;
+  font-weight: bold;
+}
