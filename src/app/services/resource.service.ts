@@ -48,6 +48,7 @@ export class ResourceService {
 
   addResource(resource: Resources) {
     this.resourcesCollection = this.db.collection(this.COLLECTION_NAME);
+    console.log(resource.category);
     resource.creationDate = new Date();
     resource.banner = this.banners[resource.category];
     resource.isPublic = false;

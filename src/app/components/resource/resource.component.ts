@@ -44,9 +44,7 @@ export class ResourceComponent implements OnInit {
   }
 
   clickKeyword(item) {
-    // this.resourceService.findAllResourcesByKeyword(item).subscribe(resources => {
-    //   console.log(resources)
-    // })
+    this.router.navigate(['keyword', item]);
   }
   /*
     open(contenido) {
