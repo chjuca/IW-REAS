@@ -25,6 +25,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ResourcesPublicComponent } from './components/resources-public/resources-public.component';
 import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
+import { ResourcesKeywordsComponent } from './components/resources-keywords/resources-keywords.component';
 
 
 
@@ -41,7 +42,8 @@ import { UserNavbarComponent } from './components/user-navbar/user-navbar.compon
     ResourcesPublicComponent,
     
     ResourcesPublicComponent,
-    UserNavbarComponent
+    UserNavbarComponent,
+    ResourcesKeywordsComponent
   ],
   imports: [
     BrowserModule,

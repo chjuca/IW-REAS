@@ -1,3 +1,4 @@
+import { ResourcesKeywordsComponent } from './components/resources-keywords/resources-keywords.component';
 import { ResourcesPublicComponent } from './components/resources-public/resources-public.component';
 import { ResourcesCategoryComponent } from './components/resources-category/resources-category.component';
 import { HomeComponent } from './components/home/home.component';
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'category/:category',
     component: ResourcesCategoryComponent
+  },
+  {
+    path: 'keyword/:keyword',
+    component: ResourcesKeywordsComponent
   },
   {
     path: 'login',
