@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { User } from '../models/user.interface';
 
 @Injectable({
@@ -13,20 +14,42 @@ import { User } from '../models/user.interface';
 export class AuthenticationService {
     isLoggedIn = false;
     mensaje = "";
+    rol = "";
     COLLECTION_NAME_USERS = 'users';
     userCollection: AngularFirestoreCollection;
+    subscription: Subscription;
     user: User
+    userInfo: User
     
 
     constructor(private angularFireAuth: AngularFireAuth, private db: AngularFirestore) {
        
     }
 
-
       getRolFromEmail(id: string) {
         this.userCollection = this.db.collection(this.COLLECTION_NAME_USERS);
+        this.subscription = this.userCollection.doc(id).valueChanges().subscribe(user => {
+            this.userInfo = user;
+            this.userInfo.email = id
+            console.log(this.userInfo.rol);
+          })
+        
         return this.userCollection.doc(id).valueChanges();
+
       }
+      
+      getRol(id: string) {
+        this.userCollection = this.db.collection(this.COLLECTION_NAME_USERS);
+        this.subscription = this.userCollection.doc(id).valueChanges().subscribe(user => {
+            this.userInfo = user;
+            this.userInfo.email = id
+            //console.log(this.userInfo.rol);
+          })
+        
+        return this.userInfo
+
+      }
+  
       
     addUser(user: User) {
         this.userCollection = this.db.collection(this.COLLECTION_NAME_USERS);
@@ -68,11 +91,9 @@ export class AuthenticationService {
 
 
     /* Sign out */
-    SignOut() {
-        this.angularFireAuth
-            .auth
-            .signOut();
-        localStorage.removeItem('user');
+    async SignOut() {
+      this.angularFireAuth.auth.signOut();
+      localStorage.removeItem('user');
     }
 
 }
