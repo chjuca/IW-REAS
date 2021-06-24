@@ -40,8 +40,6 @@ import { ResourcesKeywordsComponent } from './components/resources-keywords/reso
     LoginComponent,
     RegisterComponent,
     ResourcesPublicComponent,
-    
-    ResourcesPublicComponent,
     UserNavbarComponent,
     ResourcesKeywordsComponent
   ],
