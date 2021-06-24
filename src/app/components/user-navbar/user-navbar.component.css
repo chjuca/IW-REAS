@@ -21,3 +21,20 @@
     padding: 0.3em;
     margin-left: 0.3em;
 }
+.navtext{
+    color: #FFFF;
+}
+.special{
+    height: 2em;
+    border: none;
+    background-color: #F3B926;
+    color : #003F72;
+    font-weight: bold;
+}
+a{
+    color: #003F72;
+}
+  a:hover {
+   
+    color: black;
+  }
