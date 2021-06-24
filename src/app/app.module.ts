@@ -41,7 +41,6 @@ import { ResourcesKeywordsComponent } from './components/resources-keywords/reso
     RegisterComponent,
     ResourcesPublicComponent,
     UserNavbarComponent,
-    UserNavbarComponent,
     ResourcesKeywordsComponent
   ],
   imports: [

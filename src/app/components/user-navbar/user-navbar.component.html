@@ -1,11 +1,69 @@
 <header>
-    <div>
-        <nav class="navbar navbar-light" style="background-color: #003F72;">
-            <a href="/home"><img src="https://www.utpl.edu.ec/sites/all/themes/utpl/logo.png"  style="width: 8em; margin-left: 2em;"></a>
-            <!-- <a class="navbar-brand redhatbold" href="/home"></a> -->
-            <form class="form-inline">
-                <button class="btn redhat butblu" type="submit">Nombre usuario</button>
-            </form>
-        </nav>
+
+
+<nav  *ngIf="usuario.rol == 'estudiante'"class="navbar navbar-expand-lg navbar-light bg-light style='color:#004272';">
+    <div  class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand" href="/home">UTPL</a>
+      <ul class="navbar-nav navbar-left">
+        <li class="nav-item">
+            <a class="nav-link" href="admin/resource-form">Subir un recurso</a>
+          </li>
+
+      </ul>
+
     </div>
+    <ul class="nav navbar-nav navbar-right mr-5">
+        <li><button (click)= "SignOut()" class="special rounded-pill h6 " data-bs-toggle="modal"
+            data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Cerrar sesión&nbsp;&nbsp;&nbsp;&nbsp;</button></li>
+      </ul>
+      <br>
+      <br>
+  </nav>
+
+<nav  *ngIf="usuario.rol == 'admin'"class="navbar navbar-expand-lg navbar-light bg-light style='color:#004272';">
+    <div  class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand" href="/home">UTPL</a>
+      <ul class="navbar-nav navbar-left">
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/resources">Gestionar recursos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Gestionar usuario</a>
+          </li>
+      </ul>
+
+    </div>
+    <ul class="nav navbar-nav navbar-right mr-5">
+        <li><button (click)= "SignOut()" class="special rounded-pill h6 " data-bs-toggle="modal"
+            data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Cerrar sesión&nbsp;&nbsp;&nbsp;&nbsp;
+             </button></li>
+      </ul>
+  </nav>
+
+
+  <nav  *ngIf="usuario.rol == ''"class="navbar navbar-expand-lg navbar-light bg-light style='color:#004272';">
+    <div  class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand" href="/home">UTPL</a>
+      <ul class="navbar-nav navbar-left">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Categorias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Ser colaborador</a>
+          </li>
+      </ul>
+
+    </div>
+    <ul class="nav navbar-nav navbar-right mr-5">
+        <li><button  class="special rounded-pill h6 " data-bs-toggle="modal"
+            data-bs-target="#evaluateResource"><a style="text-decoration: none;" href="/login">&nbsp;&nbsp;&nbsp;&nbsp;Iniciar sesión&nbsp;&nbsp;&nbsp;&nbsp;</a></button></li>
+            <li><button  class="special rounded-pill h6 " data-bs-toggle="modal"
+              data-bs-target="#evaluateResource"><a style="text-decoration: none;" href="/register">&nbsp;&nbsp;&nbsp;&nbsp;Registro&nbsp;&nbsp;&nbsp;&nbsp;</a></button></li>
+          
+        </ul>
+  </nav>
+
+
+
+
 </header>

@@ -26,7 +26,8 @@
             </form><!-- /form -->
 
             <div *ngIf="entry; else elseBlock" class="alert alert-success" role="alert">
-                Acceso correcto
+                Redirigiendo...
+            <meta http-equiv="refresh" content="2; url=/home">  
             </div>
             <div *ngIf="entry==''" class="alert alert-danger" role="alert">
                 {{mensaje}}

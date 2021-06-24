@@ -1,4 +1,9 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/models/user.interface';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-user-navbar',
@@ -7,9 +12,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserNavbarComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor(private authenticationService: AuthenticationService) {
+ 
+   }
+   usuario= {} as User ;
+   subscription: Subscription;
+   reload = false;
 
   ngOnInit() {
-  }
+
+
+   const user = JSON.parse(localStorage.getItem('user'))
+
+   if(localStorage.getItem('user') != null){
+     this.subscription = this.authenticationService.getRolFromEmail(user["email"]).subscribe(usuario =>{
+       this.usuario = usuario
+       console.log(usuario)
+     })
+   }else{
+    this.usuario.rol = ""
+    
+     console.log(this.usuario)
+  
+  
+    }
 
 }
+
+async SignOut() {
+
+ 
+  this.usuario.rol = ""
+   this.authenticationService.SignOut();
+   this.reload = true;
+   console.log(localStorage.getItem("user"))
+}
+}
+
+
