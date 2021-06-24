@@ -22,7 +22,7 @@
 
 <div class="row mb-3">
     <div class="col-3 ybox redhab ">
-        <section class="mlf">
+        <section class="mlf" style="padding:3%;">
             <h3>Áreas</h3>
             <h4>Educación Básica</h4>
             <ul>
@@ -62,20 +62,19 @@
         </section>
 
     </div>
-    <div class="col-9">
+    <div class="col-9 "style="padding:auto%; background-color: white;">
         <br>
-        <h2 class="redhab">Recursos mejor calificados</h2>
+        <h2 class="redhab" style="margin-left: 0.3em;">Recursos mejor calificados</h2>
         <ng-image-slider [images]="imageObject" [imagePopup]="false"
-            [imageSize]="{width: '300px', height: '200px', space: 4}" #nav>
+            [imageSize]="{width: '300px', height: '200px', space: 30}" #nav>
         </ng-image-slider>
-        <h2 class="redhab">Recursos recientes</h2>
+        <h2 class="redhab" style="margin-left: 0.3em;">Recursos recientes</h2>
         <ng-image-slider [images]="resourcesCreationDate" [imagePopup]="false"
-        [imageSize]="{width: '300px', height: '200px', space: 4}" (imageClick)="clickImageCreationDate($event)"#nav>
-    </ng-image-slider>
-
+            [imageSize]="{width: '300px', height: '200px', space: 30}" (imageClick)="clickImageCreationDate($event)"#nav>
+        </ng-image-slider>
     </div>
 </div>
-<div>
+<div style="padding: auto; margin-top: -1em;">
     <div class="centered bg-image redhat img-2">
         <div class="col-sm-3" style="text-align: center;">
             <h3>+1000</h3>
@@ -92,12 +91,12 @@
     </div>
 </div>
 <footer class="text-center text-lg-start bg-image text-muted fnt img-3 ">
-    <section>
+    <section style="padding: 0.5%">
         <div class="container text-center text-md-start mt-5 mgrt">
             <div class="row mt-3">
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <h6 class="text-uppercase redhatbold mb-4">
-                        <h2>UTPL</h2>
+                       <img src="https://www.utpl.edu.ec/sites/all/themes/utpl/logo.png"  style="width: 4em">
                     </h6>
                 </div>
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 wh">
@@ -130,6 +129,7 @@
     </section>
     <div class="text-center p-4 wh">
         © 2021 Copyright:
+        <br>
         <a class="text-reset fw-bold" href="https://www.utpl.edu.ec">Universidad Técnica Particular de Loja</a>
     </div>
 </footer>

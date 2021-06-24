@@ -25,7 +25,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ResourcesPublicComponent } from './components/resources-public/resources-public.component';
 import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
-
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 
 @NgModule({
@@ -39,9 +39,8 @@ import { UserNavbarComponent } from './components/user-navbar/user-navbar.compon
     LoginComponent,
     RegisterComponent,
     ResourcesPublicComponent,
-    
-    ResourcesPublicComponent,
-    UserNavbarComponent
+    UserNavbarComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

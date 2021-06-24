@@ -6,6 +6,7 @@ import { ResourcesComponent } from './components/resources/resources.component';
 import { ResourceFormComponent } from './components/resource-form/resource-form.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -35,8 +36,12 @@ const routes: Routes = [
     component: RegisterComponent
   },
 
-  // RUTAS DE ADMIN
 
+  // RUTAS DE ADMIN
+  {
+    path: 'admin/panel',
+    component: AdminPanelComponent
+  },
   {
     path: 'admin/resources',
     component: ResourcesPublicComponent
