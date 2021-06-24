@@ -49,7 +49,7 @@ export class ResourceFormComponent implements OnInit {
     this.resource.keywords = this.keywords;
     this.resource.authors = this.authors;
     this.resourceService.onUpload(this.resource, this.event);
-    console.log(this.resource);
+    console.log(this.resource.category);
     this.resourceService.uploadPercent.subscribe(uploadPercent => {
       this.uploadPercent = uploadPercent;
       if (this.uploadPercent == 100) {
