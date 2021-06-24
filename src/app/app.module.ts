@@ -26,6 +26,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ResourcesPublicComponent } from './components/resources-public/resources-public.component';
 import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
 import { ResourcesKeywordsComponent } from './components/resources-keywords/resources-keywords.component';
+import { UserComponent } from './components/user/user.component';
+import { ResourcesSearchComponent } from './components/resources-search/resources-search.component';
 
 
 
@@ -41,7 +43,9 @@ import { ResourcesKeywordsComponent } from './components/resources-keywords/reso
     RegisterComponent,
     ResourcesPublicComponent,
     UserNavbarComponent,
-    ResourcesKeywordsComponent
+    ResourcesKeywordsComponent,
+    UserComponent,
+    ResourcesSearchComponent
   ],
   imports: [
     BrowserModule,

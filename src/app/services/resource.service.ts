@@ -123,6 +123,18 @@ export class ResourceService {
     return this.resources;
   }
 
+  findAllResourcesByTitle(title: String) {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.orderBy("title").startAt(title).endAt(title + '\uf8ff'));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.resources;
+  }
+
   findAllResourcesByKeyword(keyword: String) {
     this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where("keywords", "array-contains", keyword).where('isPublic', '==', true));
     this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
