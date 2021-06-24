@@ -40,8 +40,8 @@ const routes: Routes = [
     component: RegisterComponent
   },
 
-  // RUTAS DE ADMIN
 
+  // RUTAS DE ADMIN
   {
     path: 'admin/resources',
     component: ResourcesPublicComponent
