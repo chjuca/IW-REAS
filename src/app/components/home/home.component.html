@@ -14,8 +14,10 @@
     <div style="width: 70%; margin-left: auto;margin-right: auto;">
         <h2>Repositorio</h2>
         <h1>REAS</h1>
-        <div >
-            <input class="form-control rounded-pill" type="text" placeholder="Ingrese un tema..." style="width: 100%">
+        <div>
+            <input class="form-control rounded-pill" type="text" [(ngModel)]="search" placeholder="Ingrese un tema..."
+                style="width: 80%">
+            <button (click)="searchResources()">Buscar</button>
         </div>
     </div>
 </div>
@@ -62,7 +64,7 @@
         </section>
 
     </div>
-    <div class="col-9 "style="padding:auto%; background-color: white;">
+    <div class="col-9" style="padding:auto%; background-color: white;">
         <br>
         <h2 class="redhab" style="margin-left: 0.3em;">Recursos mejor calificados</h2>
         <ng-image-slider [images]="imageObject" [imagePopup]="false"
@@ -70,7 +72,8 @@
         </ng-image-slider>
         <h2 class="redhab" style="margin-left: 0.3em;">Recursos recientes</h2>
         <ng-image-slider [images]="resourcesCreationDate" [imagePopup]="false"
-            [imageSize]="{width: '300px', height: '200px', space: 30}" (imageClick)="clickImageCreationDate($event)"#nav>
+            [imageSize]="{width: '300px', height: '200px', space: 30}" (imageClick)="clickImageCreationDate($event)"
+            #nav>
         </ng-image-slider>
     </div>
 </div>
@@ -96,7 +99,7 @@
             <div class="row mt-3">
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <h6 class="text-uppercase redhatbold mb-4">
-                       <img src="https://www.utpl.edu.ec/sites/all/themes/utpl/logo.png"  style="width: 4em">
+                        <img src="https://www.utpl.edu.ec/sites/all/themes/utpl/logo.png" style="width: 4em">
                     </h6>
                 </div>
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 wh">

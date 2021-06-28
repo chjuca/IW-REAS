@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   subscription: Subscription;
   resources = [];
   resourcesCreationDate = [];
+  search = "";
 
   imageObject: Array<object> = [{
     image: 'https://i.ibb.co/CJ5XxkT/14.jpg',
@@ -77,6 +78,12 @@ export class HomeComponent implements OnInit {
 
   clickImageCreationDate(event) {
     this.router.navigate(['resource', this.resourcesCreationDate[event].id]);
+  }
+
+  searchResources() {
+    if (this.search.length > 0) {
+      this.router.navigate(['search', encodeURI(this.search)]);
+    }
   }
 
 }

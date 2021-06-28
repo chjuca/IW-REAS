@@ -1,3 +1,5 @@
+import { ResourcesSearchComponent } from './components/resources-search/resources-search.component';
+import { UserComponent } from './components/user/user.component';
 import { ResourcesKeywordsComponent } from './components/resources-keywords/resources-keywords.component';
 import { ResourcesPublicComponent } from './components/resources-public/resources-public.component';
 import { ResourcesCategoryComponent } from './components/resources-category/resources-category.component';
@@ -32,6 +34,10 @@ const routes: Routes = [
     component: ResourcesKeywordsComponent
   },
   {
+    path: 'search/:search',
+    component: ResourcesSearchComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
@@ -50,6 +56,10 @@ const routes: Routes = [
     path: 'admin/resource-form',
     component: ResourceFormComponent
   },
+  {
+    path: 'admin/users',
+    component: UserComponent
+  }
 
 ];
 
