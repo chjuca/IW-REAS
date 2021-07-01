@@ -41,6 +41,19 @@ export class ResourceService {
     return this.resources;
   }
 
+  findAllMultimedia() {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where('type', '==', 'Video').where('isPublic', '==', false));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.resources;
+  }
+
+
   findResourceByID(id: string) {
     this.resourcesCollection = this.db.collection(this.COLLECTION_NAME);
     return this.resourcesCollection.doc(id).valueChanges();

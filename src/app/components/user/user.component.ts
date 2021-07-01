@@ -11,9 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
+  roles = ['admin', 'estudiante', 'contribuidor']
   users = [];
   subscription: Subscription;
-  newRole: string;
 
   constructor(public userService: UserService) { }
 
@@ -21,12 +21,10 @@ export class UserComponent implements OnInit {
 
     this.subscription = this.userService.findAllUsers().subscribe(users => {
       this.users = users;
-      console.log(this.users);
     })
   }
 
   updateRole(user: User) {
-    user.rol = this.newRole;
     this.userService.updateRole(user);
   }
 

@@ -1,33 +1,29 @@
 <div class="container">
     <table class="table">
         <thead>
-          <tr>
-            <th scope="col">Usuario</th>
-            <th scope="col">Rol</th>
-          </tr>
+            <tr>
+                <th scope="col">Usuario</th>
+                <th scope="col">Rol</th>
+            </tr>
         </thead>
         <tbody>
-          <tr>
-            <td scope="row">
-                <p *ngFor="let user of users">
-                    {{user.email}}
-                </p>
-            </td>
-            <td scope="row">
-                <p *ngFor="let user of users">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>{{user.rol}}</option>
+            <tr *ngFor="let user of users">
+                <td scope="row">
+                    <p>{{user.email}}</p>
+                </td>
+                <td scope="row">
+                    <select class="form-select" aria-label=".form-select-sm example" name="type" [(ngModel)]="user.rol"
+                        [ngModelOptions]="{standalone: true}">
+                        <option [selected]="user.rol == role ? true : false" [value]="role" *ngFor="let role of roles">
+                            {{role}}</option>
                     </select>
-                </p>
-            </td>
-            <td scope="row">
-                <p *ngFor="let user of users">
-                    <button type="button" class="btn btn-success" (click)="updateRgiaole()">Actualizar</button>
-                </p>
-            </td>
-          </tr>
+                </td>
+                <td scope="row">
+                    <button type="button" class="btn btn-success" (click)="updateRole(user)">Actualizar</button>
+                </td>
+            </tr>
         </tbody>
-      </table>
+    </table>
 </div>
 
 <!-- <div class="align-self-center text-center">

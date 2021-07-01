@@ -33,5 +33,4 @@ export class UserService {
     this.userDocument = this.db.collection(this.COLLECTION_NAME).doc(`${user.email}`);
     this.userDocument.update(user);
   }
-
 }
