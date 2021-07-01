@@ -103,7 +103,12 @@ export class ResourceService {
       })
       ).subscribe();
     } else {
-      console.log("ERRRROR, debe agregar un recurso educativo")
+      if (resource.type == "Video") {
+        console.log(resource.url);
+        this.addResource(resource)
+      } else {
+        console.log("RRROR SE DEBE CARGAR UN URL")
+      }
     }
   }
 

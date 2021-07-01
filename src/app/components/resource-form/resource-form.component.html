@@ -85,13 +85,6 @@
                 </div>
                 <br>
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Recurso:</label>
-                    <div class="col-sm-6">
-                        <input #inputFile type="file" (change)="setEvent($event)" name="file" class="form-control">
-                    </div>
-                </div>
-                <br>
-                <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Tipo de Recurso:</label>
                     <div class="col-sm-6">
                         <select class="form-select" aria-label=".form-select-sm example" name="type"
@@ -101,6 +94,21 @@
                     </div>
                 </div>
                 <br>
+                <div class="form-group row" *ngIf="resource.type != 'Video'; else url">
+                    <label class="col-sm-3 col-form-label">Recurso:</label>
+                    <div class="col-sm-6">
+                        <input #inputFile type="file" (change)="setEvent($event)" name="file" class="form-control">
+                    </div>
+                </div>
+                <ng-template #url>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">URL de Youtube:</label>
+                        <div class="col-sm-6">
+                            <input type="text" [(ngModel)]="resource.url" class="form-control" name="url"
+                                placeholder="URL del video">
+                        </div>
+                    </div>
+                </ng-template>
                 <br>
                 <div class="form-group row">
                     <div class="col-2">
