@@ -34,7 +34,20 @@ h4{
     color: #003F72;
   }
   
-  
+  .bpd {
+    margin-left: 10px;
+  }
+
+  .rgth {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  .centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
   .round {
     border-radius: 60%;
   }

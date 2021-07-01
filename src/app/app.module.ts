@@ -45,7 +45,7 @@ import { ResourcesSearchComponent } from './components/resources-search/resource
     UserNavbarComponent,
     ResourcesKeywordsComponent,
     UserComponent,
-    ResourcesSearchComponent
+    ResourcesSearchComponent,
   ],
   imports: [
     BrowserModule,
