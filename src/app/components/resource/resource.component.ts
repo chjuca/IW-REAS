@@ -18,13 +18,17 @@ export class ResourceComponent implements OnInit {
   resource = {} as Resources;
   idResource: string;
   subscription: Subscription;
+  url = "nothing here";
   //========== COMMENTS ==========
   comment = {} as Comments;
   comments = [];
   constructor(public resourceService: ResourceService, public commentService: CommentsService, public router: Router, public route: ActivatedRoute, private modalService: NgbModal) { }
 
   ngOnInit() {
+    this.getUrl()
+    console.log(this.url)
     this.route.paramMap.subscribe(params => {
+
       if (params.has('id')) {
         this.idResource = params.get('id');
       }
@@ -45,6 +49,11 @@ export class ResourceComponent implements OnInit {
 
   clickKeyword(item) {
     this.router.navigate(['keyword', item]);
+  }
+
+  getUrl(){
+    this.url = window.location.href;
+    console.log(this.url)
   }
   /*
     open(contenido) {
