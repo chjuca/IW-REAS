@@ -28,7 +28,7 @@ import { UserNavbarComponent } from './components/user-navbar/user-navbar.compon
 import { ResourcesKeywordsComponent } from './components/resources-keywords/resources-keywords.component';
 import { UserComponent } from './components/user/user.component';
 import { ResourcesSearchComponent } from './components/resources-search/resources-search.component';
-import { SharebuttonComponent } from './components/sharebutton/sharebutton.component';
+
 
 
 
@@ -47,7 +47,7 @@ import { SharebuttonComponent } from './components/sharebutton/sharebutton.compo
     ResourcesKeywordsComponent,
     UserComponent,
     ResourcesSearchComponent,
-    SharebuttonComponent
+
   ],
   imports: [
     BrowserModule,

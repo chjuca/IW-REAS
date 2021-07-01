@@ -39,10 +39,15 @@
             </div>
         </div>
     </div>
-
+    <!-- Meterle la logica de roles ty -->
     <div class="container">
+        <div class="rgth">
+            <button type="button" class="btn btn-primary">Publicar</button>
+            <button type="button" class="btn btn-danger bpd">Eliminar</button>
+        </div>
         <br>
     </div>
+
     <div class="container">
         <div class="row  ">
             <div class="col-6 mt-3">
@@ -67,6 +72,11 @@
             <li *ngFor="let author of resource.authors" style="color: black; opacity: 0.6;">{{author}}</li>
             <!-- <h6 *ngFor="let author of resource.authors" style="color: black; opacity: 0.6;">{{author}}</h6> -->
             <hr>
+        </div>
+    </div>
+    <div *ngIf="resource.type == 'video'" class="container" style="padding: 2%;">
+        <div class="embed-responsive embed-responsive-21by9 centered">
+            <iframe  width="720" height="480" class="embed-responsive-item" src=" https://www.youtube.com/embed/vlDzYIIOYmM"></iframe>
         </div>
     </div>
     <div class="container mt-4">

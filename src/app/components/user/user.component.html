@@ -1,5 +1,41 @@
-<ul>
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Usuario</th>
+            <th scope="col">Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">
+                <p *ngFor="let user of users">
+                    {{user.email}}
+                </p>
+            </td>
+            <td scope="row">
+                <p *ngFor="let user of users">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>{{user.rol}}</option>
+                    </select>
+                </p>
+            </td>
+            <td scope="row">
+                <p *ngFor="let user of users">
+                    <button type="button" class="btn btn-success" (click)="updateRgiaole()">Actualizar</button>
+                </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<!-- <div class="align-self-center text-center">
+    <button type="button" class="btn btn-success" (click)="updateRole()">Actualizar</button>
+</div> -->
+
+<!-- <ul>
     <li *ngFor="let user of users">
         {{user.email + "-"}}{{user.rol}}
     </li>
-</ul>
+</ul> -->
