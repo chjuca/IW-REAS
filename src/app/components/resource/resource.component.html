@@ -80,6 +80,27 @@
         </div>
     </div>
     <div class="container mt-4">
+
+        <div class="row mb-4">
+            <div class="col-1">
+                <a href="http://www.facebook.com/share.php?u={{url}}&title=Te invito a leer {{resource.title}}">
+                    <img width="40" height="40" src="https://www.facebook.com/images/fb_icon_325x325.png" (onclick)="getUrl()" alt="..." class="rounded mx-auto d-block" >
+                </a>
+        
+            </div>
+            <div class="col-1">
+                <a href="https://twitter.com/share?url={{url}}&text=Te invito a leer {{resource.title}} en REAS UTPL!!!">
+                    <img  width="40" height="40" src="http://www.christiandve.com/wp-content/uploads/2015/01/Twitter_logo_blue.png" (onclick)="getUrl()" alt="..." class="rounded mx-auto d-block" >
+                </a>
+               
+            </div>
+            <div class="col-1">
+                <a href="https://api.whatsapp.com/send?text=Te invito a leer {{resource.title}} en {{url}} ">
+                    <img width="40" height="40" src="https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN" alt="..." class="rounded mx-auto d-block" >
+                </a>
+            </div>
+          </div>
+
         <div class="row">
             <div class="col-7">
                 <h4>Abstract</h4>

@@ -31,6 +31,7 @@ import { ResourcesSearchComponent } from './components/resources-search/resource
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { ResourcesSearchComponent } from './components/resources-search/resource
     ResourcesKeywordsComponent,
     UserComponent,
     ResourcesSearchComponent,
+
   ],
   imports: [
     BrowserModule,
