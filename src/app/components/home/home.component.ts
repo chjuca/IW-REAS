@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Subscription } from 'rxjs';
 import { ResourceService } from './../../services/resource.service';
 import { Router } from '@angular/router';
@@ -18,6 +19,9 @@ export class HomeComponent implements OnInit {
   resources = [];
   resourcesCreationDate = [];
   search = "";
+  resourcesCount = 0;
+  usersCount = 0;
+  multimediaCount = 0;
 
   imageObject: Array<object> = [{
     image: 'https://i.ibb.co/CJ5XxkT/14.jpg',
@@ -56,9 +60,12 @@ export class HomeComponent implements OnInit {
   ];
 
 
-  constructor(public resourceService: ResourceService, public router: Router) { }
+  constructor(public resourceService: ResourceService, public userService: UserService, public router: Router) { }
 
   ngOnInit() {
+    this.countResources();
+    this.countUsers();
+    this.countMultimedia();
     this.subscription = this.resourceService.findAllresourcesOrderByCreatedAt().subscribe(resources => {
       resources.forEach(resource => {
         this.resourcesCreationDate.push({
@@ -84,6 +91,23 @@ export class HomeComponent implements OnInit {
     if (this.search.length > 0) {
       this.router.navigate(['search', encodeURI(this.search)]);
     }
+  }
+
+  countResources() {
+    this.subscription = this.resourceService.findAllResources().subscribe(resources => {
+      this.resourcesCount = resources.length;
+    })
+  }
+  countUsers() {
+    this.subscription = this.userService.findAllUsers().subscribe(users => {
+      this.usersCount = users.length
+    })
+  }
+
+  countMultimedia() {
+    this.subscription = this.resourceService.findAllMultimedia().subscribe(resources => {
+      this.multimediaCount = resources.length;
+    })
   }
 
 }

@@ -17,9 +17,10 @@
         <div class="input-group mb-3 ">
             <input type="text" class="form-control" [(ngModel)]="search" placeholder="Ingrese un tema...">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" (click)="searchResources()" style="background-color: #003F72; color: #ffff;" type="button">Buscar</button>
+                <button class="btn btn-outline-secondary" (click)="searchResources()"
+                    style="background-color: #003F72; color: #ffff;" type="button">Buscar</button>
             </div>
-          </div>
+        </div>
         <!-- <div>
             <input class="form-control rounded-pill" type="text" [(ngModel)]="search" placeholder="Ingrese un tema..."
                 style="width: 80%">
@@ -86,15 +87,15 @@
 <div style="padding: auto; margin-top: -1em;">
     <div class="centered bg-image redhat img-2">
         <div class="col-sm-3" style="text-align: center;">
-            <h3>+1000</h3>
+            <h3>+{{resourcesCount}}</h3>
             <h4>RECURSOS</h4>
         </div>
         <div class="col-sm-3" style="text-align: center;">
-            <h3>+1000</h3>
+            <h3>+{{usersCount}}</h3>
             <h4>ESTUDIANTES</h4>
         </div>
         <div class="col-sm-3" style="text-align: center;">
-            <h3>+1000</h3>
+            <h3>+{{multimediaCount}}</h3>
             <h4>MULTIMEDIA</h4>
         </div>
     </div>

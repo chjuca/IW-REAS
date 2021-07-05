@@ -49,17 +49,24 @@ export class ResourceFormComponent implements OnInit {
     this.resource.keywords = this.keywords;
     this.resource.authors = this.authors;
     this.resourceService.onUpload(this.resource, this.event);
-    console.log(this.resource.category);
-    this.resourceService.uploadPercent.subscribe(uploadPercent => {
-      this.uploadPercent = uploadPercent;
-      if (this.uploadPercent == 100) {
-        this.resource = {} as Resources;
-        this.keywords = [];
-        this.authors = [];
-        this.category = {};
-        this.myInputVariable.nativeElement.value = '';
-      }
-    })
+    if (this.resource.type != "Video") {
+      this.resourceService.uploadPercent.subscribe(uploadPercent => {
+        this.uploadPercent = uploadPercent;
+        if (this.uploadPercent == 100) {
+          this.resource = {} as Resources;
+          this.keywords = [];
+          this.authors = [];
+          this.category = {};
+          this.myInputVariable.nativeElement.value = '';
+        }
+      })
+    } else {
+      this.resource = {} as Resources;
+      this.keywords = [];
+      this.authors = [];
+      this.category = {};
+      this.myInputVariable.nativeElement.value = '';
+    }
   }
 
   setEvent(e: any) {
@@ -71,7 +78,11 @@ export class ResourceFormComponent implements OnInit {
       if (this.event) {
         return false
       } else {
-        return true;
+        if (this.resource.url) {
+          return false;
+        } else {
+          return true;
+        }
       }
     }
     else {

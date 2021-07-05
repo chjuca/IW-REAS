@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Resources } from './../../models/resources.interface';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -18,11 +19,12 @@ export class ResourceComponent implements OnInit {
   resource = {} as Resources;
   idResource: string;
   subscription: Subscription;
+  idVideo = "";
   url = "nothing here";
   //========== COMMENTS ==========
   comment = {} as Comments;
   comments = [];
-  constructor(public resourceService: ResourceService, public commentService: CommentsService, public router: Router, public route: ActivatedRoute, private modalService: NgbModal) { }
+  constructor(public resourceService: ResourceService, public commentService: CommentsService, public router: Router, public route: ActivatedRoute, private modalService: NgbModal, private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.getUrl()
@@ -42,6 +44,11 @@ export class ResourceComponent implements OnInit {
     })
   }
 
+  URL() {
+    let id = this.resource.url.split("=")[1];
+    return this._sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + id);
+  }
+
   addComment() {
     this.commentService.addComment(this.comment, this.resource.id);
     this.comment = {};
@@ -51,9 +58,8 @@ export class ResourceComponent implements OnInit {
     this.router.navigate(['keyword', item]);
   }
 
-  getUrl(){
+  getUrl() {
     this.url = window.location.href;
-    console.log(this.url)
   }
   /*
     open(contenido) {

@@ -41,6 +41,19 @@ export class ResourceService {
     return this.resources;
   }
 
+  findAllMultimedia() {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where('type', '==', 'Video').where('isPublic', '==', false));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.resources;
+  }
+
+
   findResourceByID(id: string) {
     this.resourcesCollection = this.db.collection(this.COLLECTION_NAME);
     return this.resourcesCollection.doc(id).valueChanges();
@@ -90,7 +103,12 @@ export class ResourceService {
       })
       ).subscribe();
     } else {
-      console.log("ERRRROR, debe agregar un recurso educativo")
+      if (resource.type == "Video") {
+        console.log(resource.url);
+        this.addResource(resource)
+      } else {
+        console.log("RRROR SE DEBE CARGAR UN URL")
+      }
     }
   }
 
