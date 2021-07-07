@@ -28,12 +28,12 @@ export class UserNavbarComponent implements OnInit {
    if(localStorage.getItem('user') != null){
      this.subscription = this.authenticationService.getRolFromEmail(user["email"]).subscribe(usuario =>{
        this.usuario = usuario
-       console.log(usuario)
+
      })
    }else{
     this.usuario.rol = ""
     
-     console.log(this.usuario)
+  
   
   
     }
@@ -41,12 +41,12 @@ export class UserNavbarComponent implements OnInit {
 }
 
 async SignOut() {
-
+ 
  
   this.usuario.rol = ""
    this.authenticationService.SignOut();
    this.reload = true;
-   console.log(localStorage.getItem("user"))
+   window.location.href = "/home"
 }
 }
 
