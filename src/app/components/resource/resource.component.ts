@@ -7,6 +7,12 @@ import { Resources } from './../../models/resources.interface';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CalificationService } from 'src/app/services/calification.service.service';
+import { Calification } from 'src/app/models/calificationinterace';
+import { User } from 'src/app/models/user.interface';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+
+
 
 
 @Component({
@@ -15,20 +21,38 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./resource.component.css']
 })
 export class ResourceComponent implements OnInit {
-
+  loged: boolean = false;
+  userInfo= {} as User ;
+  resourceCalification = 0;
+  resourceCalificationArr = []
+  resourceCalificationArrleft = []
   resource = {} as Resources;
+  calification = {} as Calification;
   idResource: string;
   subscription: Subscription;
   idVideo = "";
   url = "nothing here";
+  califications = [];
   //========== COMMENTS ==========
   comment = {} as Comments;
   comments = [];
-  constructor(public resourceService: ResourceService, public commentService: CommentsService, public router: Router, public route: ActivatedRoute, private modalService: NgbModal, private _sanitizer: DomSanitizer) { }
+
+  constructor(private authenticationService: AuthenticationService,public  resourceService: ResourceService, public commentService: CommentsService, public calificationService: CalificationService, public router: Router, public route: ActivatedRoute, private modalService: NgbModal, private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    if(localStorage.getItem('user') != null){
+      const user = JSON.parse(localStorage.getItem('user'))
+      this.subscription = this.authenticationService.getRolFromEmail(user["email"]).subscribe(usuario =>{
+        console.log(usuario)
+        this.userInfo = usuario 
+      })   
+      this.calification.user = user["email"];
+      this.comment.user = user["email"];
+      this.loged = true;
+    }else{
+      this.loged = false;
+    }
     this.getUrl()
-    console.log(this.url)
     this.route.paramMap.subscribe(params => {
 
       if (params.has('id')) {
@@ -41,7 +65,13 @@ export class ResourceComponent implements OnInit {
     });
     this.subscription = this.commentService.getCommentsByResource(this.idResource).subscribe(comments => {
       this.comments = comments;
-    })
+    });
+    this.subscription = this.calificationService.getCalificationByResuorce(this.idResource).subscribe(calification => {
+      this.califications = calification;     
+      this.getCalificationValue(this.califications);
+    
+    });
+  
   }
 
   URL() {
@@ -61,11 +91,41 @@ export class ResourceComponent implements OnInit {
   getUrl() {
     this.url = window.location.href;
   }
-  /*
-    open(contenido) {
-      this.modalService.open(contenido, { centered: true });
-      console.log("El método accede")
-    }*/
 
 
-}
+    saveCalification(){
+      console.log(this.userInfo["rol"])
+      var  rates = document.getElementsByName('rate');
+      var  rate_value;
+      rates.forEach(element => {
+        const example = element as HTMLInputElement;
+        if (example.checked){
+          rate_value = (example.value);
+        }
+      });
+      this.calification.value = rate_value;
+      this.calificationService.addCalification(this.calification,  this.idResource);
+    }
+
+  getCalificationValue(califications1: Calification[]){
+   if (califications1.length == 0){
+      this.resourceCalification = 0
+   }else{
+
+    var calificationValue = 0;
+    califications1.forEach(calification => {   
+      var a = parseInt((calification["value"]))
+      calificationValue = calificationValue + a
+    
+    }   
+    );
+    this.resourceCalification = calificationValue/califications1.length
+    var leftStars = 5 -  this.resourceCalification ;
+    this.resourceCalificationArr = Array(Math.ceil(this.resourceCalification)).fill(0);
+    this.resourceCalificationArrleft = Array(Math.floor(leftStars)).fill(0);
+   }
+
+
+  }
+  
+  }
