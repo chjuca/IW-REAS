@@ -19,28 +19,28 @@
                     <div class="container">
                         <div class="rate">
                             <input type="radio" id="star5" name="rate" value="5" />
-                            <label for="star5" title="text">5 stars</label>
+                            <label for="star5" title="5 estrellas">5 stars</label>
                             <input type="radio" id="star4" name="rate" value="4" />
-                            <label for="star4" title="text">4 stars</label>
+                            <label for="star4" title="4 estrellas">4 stars</label>
                             <input type="radio" id="star3" name="rate" value="3" />
-                            <label for="star3" title="text">3 stars</label>
+                            <label for="star3" title="3 estrellas">3 stars</label>
                             <input type="radio" id="star2" name="rate" value="2" />
-                            <label for="star2" title="text">2 stars</label>
+                            <label for="star2" title="2 estrellas">2 stars</label>
                             <input type="radio" id="star1" name="rate" value="1" />
-                            <label for="star1" title="text">1 star</label>
+                            <label for="star1" title="1 estrella">1 star</label>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-warning"
-                        data-bs-dismiss="modal"><strong>Guardar</strong></button>
+                        data-bs-dismiss="modal"  (click)="saveCalification()"><strong>Guardar</strong></button>
                 </div>
             </div>
         </div>
     </div>
     <!-- Meterle la logica de roles ty -->
-    <div class="container">
+    <div *ngIf="this.userInfo['rol'] == 'admin' " class="container">
         <div class="rgth">
             <button type="button" class="btn btn-primary">Publicar</button>
             <button type="button" class="btn btn-danger bpd">Eliminar</button>
@@ -58,13 +58,15 @@
                     {{resource.creationDate?.seconds * 1000 | date: "dd/MM/yy" }}</p>
             </div>
         </div>
-        <div class="col-4">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
+        <div *ngIf="resourceCalification != 0; else Nocalification" class="col-4">
+            <span *ngFor="let item of resourceCalificationArr"  class="fa fa-star checked"></span> 
+            <span *ngFor="let item of resourceCalificationArrleft" class="fa fa-star"></span>
         </div>
+        <ng-template #Nocalification>
+            <div>
+                <p>Aún no hay calificación</p>
+            </div>
+        </ng-template>
         <div class="col-6 mt-2">
             <h4 style="color: black;">{{resource.title}}</h4>
         </div>
@@ -116,10 +118,14 @@
                     *ngFor="let item of resource.keywords">&nbsp;{{item}}&nbsp;</a>
                 <div class="d-flex flex-row justify-content-center mt-3">
                     <div></div>
-                    <div class="p-3"><button class="special rounded-pill h6" data-bs-toggle="modal"
+                    <div *ngIf="loged==false" class="p-3"><button disabled class="special rounded-pill h6" data-bs-toggle="modal"
                             data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Calificar&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     </div>
-
+                 
+                        <div *ngIf="loged==true" class="p-3"><button  class="special rounded-pill h6" data-bs-toggle="modal"
+                            data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Calificar&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                         </div>
+                    
                     <div class="p-3"><button
                             class="special rounded-pill h6">&nbsp;&nbsp;&nbsp;Descargar&nbsp;&nbsp;&nbsp;</button>
                     </div>
@@ -137,8 +143,11 @@
         <div class="input-group mb-3">
             <input type="text" class="form-control" [(ngModel)]="comment.body" placeholder="Escribe un comentario"
                 aria-label="Escribe un comentario" aria-describedby="basic-addon2">
-            <div class="input-group-append ml-5">
-                <button (click)='addComment()' class="rounded btn btn-success" type="button">Comentar</button>
+            <div *ngIf="loged==false" class="input-group-append ml-5">
+                <button disabled (click)='addComment()' class="rounded btn btn-success" type="button">Comentar</button>
+            </div>
+            <div *ngIf="loged==true" class="input-group-append ml-5">
+                <button  (click)='addComment()' class="rounded btn btn-success" type="button">Comentar</button>
             </div>
         </div>
 
@@ -148,7 +157,7 @@
                     <div class="col">
                         <div class="row">
                             <div class="col-1 mt-3">
-                                <div class=""><img src="https://i.imgur.com/Ur43esv.jpg" alt="user" width="100%"
+                                <div class=""><img src="https://icon-library.com/images/no-user-image-icon/no-user-image-icon-26.jpg" alt="user" width="100%"
                                         class="rounded-circle ">
                                 </div>
                             </div>

@@ -32,9 +32,9 @@ export class CommentsService {
   }
 
   addComment(comment: Comments, resourceID: string) {
+
     this.commentsCollection = this.db.collection(this.COLLECTION_NAME_RESOURCES).doc(resourceID).collection(this.COLLECTION_NAME_COMMENTS);
     comment.creationDate = new Date();
-    comment.user = "chjuca@utpl.edu.ec"
     this.commentsCollection.add(comment);
   }
 
