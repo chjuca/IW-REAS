@@ -42,7 +42,7 @@
     <!-- Meterle la logica de roles ty -->
     <div *ngIf="this.userInfo['rol'] == 'admin' " class="container">
         <div class="rgth">
-            <button type="button" class="btn btn-primary">Publicar</button>
+            <button type="button" class="btn btn-primary" (click)="publicResource(resource)">Publicar</button>
             <button type="button" class="btn btn-danger bpd">Eliminar</button>
         </div>
         <br>
