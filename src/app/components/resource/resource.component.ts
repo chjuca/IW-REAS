@@ -125,7 +125,9 @@ export class ResourceComponent implements OnInit {
     this.resourceCalificationArrleft = Array(Math.floor(leftStars)).fill(0);
    }
 
-
+  }
+  publicResource(resource: Resources) {
+    this.resourceService.publicResource(resource);
   }
   
   }
