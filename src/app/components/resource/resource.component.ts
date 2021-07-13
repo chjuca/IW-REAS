@@ -22,7 +22,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class ResourceComponent implements OnInit {
   loged: boolean = false;
-  userInfo= {} as User ;
+  userInfo = {} as User;
   resourceCalification = 0;
   resourceCalificationArr = []
   resourceCalificationArrleft = []
@@ -37,19 +37,19 @@ export class ResourceComponent implements OnInit {
   comment = {} as Comments;
   comments = [];
 
-  constructor(private authenticationService: AuthenticationService,public  resourceService: ResourceService, public commentService: CommentsService, public calificationService: CalificationService, public router: Router, public route: ActivatedRoute, private modalService: NgbModal, private _sanitizer: DomSanitizer) { }
+  constructor(private authenticationService: AuthenticationService, public resourceService: ResourceService, public commentService: CommentsService, public calificationService: CalificationService, public router: Router, public route: ActivatedRoute, private modalService: NgbModal, private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    if(localStorage.getItem('user') != null){
+    if (localStorage.getItem('user') != null) {
       const user = JSON.parse(localStorage.getItem('user'))
-      this.subscription = this.authenticationService.getRolFromEmail(user["email"]).subscribe(usuario =>{
+      this.subscription = this.authenticationService.getRolFromEmail(user["email"]).subscribe(usuario => {
         console.log(usuario)
-        this.userInfo = usuario 
-      })   
+        this.userInfo = usuario
+      })
       this.calification.user = user["email"];
       this.comment.user = user["email"];
       this.loged = true;
-    }else{
+    } else {
       this.loged = false;
     }
     this.getUrl()
@@ -67,11 +67,11 @@ export class ResourceComponent implements OnInit {
       this.comments = comments;
     });
     this.subscription = this.calificationService.getCalificationByResuorce(this.idResource).subscribe(calification => {
-      this.califications = calification;     
+      this.califications = calification;
       this.getCalificationValue(this.califications);
-    
+
     });
-  
+
   }
 
   URL() {
@@ -93,41 +93,41 @@ export class ResourceComponent implements OnInit {
   }
 
 
-    saveCalification(){
-      console.log(this.userInfo["rol"])
-      var  rates = document.getElementsByName('rate');
-      var  rate_value;
-      rates.forEach(element => {
-        const example = element as HTMLInputElement;
-        if (example.checked){
-          rate_value = (example.value);
-        }
-      });
-      this.calification.value = rate_value;
-      this.calificationService.addCalification(this.calification,  this.idResource);
-    }
+  saveCalification() {
+    console.log(this.userInfo["rol"])
+    var rates = document.getElementsByName('rate');
+    var rate_value;
+    rates.forEach(element => {
+      const example = element as HTMLInputElement;
+      if (example.checked) {
+        rate_value = (example.value);
+      }
+    });
+    this.calification.value = rate_value;
+    this.calificationService.addCalification(this.calification, this.resource);
+  }
 
-  getCalificationValue(califications1: Calification[]){
-   if (califications1.length == 0){
+  getCalificationValue(califications1: Calification[]) {
+    if (califications1.length == 0) {
       this.resourceCalification = 0
-   }else{
+    } else {
 
-    var calificationValue = 0;
-    califications1.forEach(calification => {   
-      var a = parseInt((calification["value"]))
-      calificationValue = calificationValue + a
-    
-    }   
-    );
-    this.resourceCalification = calificationValue/califications1.length
-    var leftStars = 5 -  this.resourceCalification ;
-    this.resourceCalificationArr = Array(Math.ceil(this.resourceCalification)).fill(0);
-    this.resourceCalificationArrleft = Array(Math.floor(leftStars)).fill(0);
-   }
+      var calificationValue = 0;
+      califications1.forEach(calification => {
+        var a = parseInt((calification["value"]))
+        calificationValue = calificationValue + a
+
+      }
+      );
+      this.resourceCalification = calificationValue / califications1.length
+      var leftStars = 5 - this.resourceCalification;
+      this.resourceCalificationArr = Array(Math.ceil(this.resourceCalification)).fill(0);
+      this.resourceCalificationArrleft = Array(Math.floor(leftStars)).fill(0);
+    }
 
   }
   publicResource(resource: Resources) {
     this.resourceService.publicResource(resource);
   }
-  
-  }
+
+}

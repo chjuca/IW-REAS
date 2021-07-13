@@ -110,6 +110,10 @@
                     </div>
                 </ng-template>
                 <br>
+                <div class="alert alert-success" role="alert" *ngIf="success">
+                    EL recurso ha sido subido con exito
+                </div>
+                <br>
                 <div class="form-group row">
                     <div class="col-2">
                         <button (click)='addResource()' class="btn bottom-utpl" [disabled]="validateForm()">Guardar

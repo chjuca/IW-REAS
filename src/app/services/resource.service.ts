@@ -65,6 +65,8 @@ export class ResourceService {
     resource.creationDate = new Date();
     resource.banner = this.banners[resource.category];
     resource.isPublic = false;
+    resource.avgCalification = 0;
+    resource.califications = [];
     this.resourcesCollection.add(resource);
   }
 
@@ -107,7 +109,7 @@ export class ResourceService {
         console.log(resource.url);
         this.addResource(resource)
       } else {
-        console.log("RRROR SE DEBE CARGAR UN URL")
+        console.log("ERRROR SE DEBE CARGAR UN URL")
       }
     }
   }
@@ -166,7 +168,20 @@ export class ResourceService {
   }
 
   findAllresourcesOrderByCreatedAt() {
-    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where('isPublic', '==', true).orderBy('creationDate', 'desc').limit(5));
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where('isPublic', '==', true).orderBy('creationDate', 'desc').limit(8));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+
+    return this.resources;
+  }
+
+  findAllResourcesOrderByCalification() {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where('isPublic', '==', true).orderBy('avgCalification', 'desc').limit(8));
     this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Resources;
