@@ -6,6 +6,7 @@ import { Resources } from './../../models/resources.interface';
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-resource-form',
@@ -36,6 +37,7 @@ export class ResourceFormComponent implements OnInit {
   uploadPercent = 0;
   author = '';
   subcategory = '';
+  success = false;
 
   constructor(public resourceService: ResourceService, public categoryService: CategoryService) { }
 
@@ -58,6 +60,7 @@ export class ResourceFormComponent implements OnInit {
           this.authors = [];
           this.category = {};
           this.myInputVariable.nativeElement.value = '';
+          this.showAlert()
         }
       })
     } else {
@@ -66,6 +69,7 @@ export class ResourceFormComponent implements OnInit {
       this.authors = [];
       this.category = {};
       this.myInputVariable.nativeElement.value = '';
+      this.showAlert()
     }
   }
 
@@ -109,6 +113,12 @@ export class ResourceFormComponent implements OnInit {
     });
   }
 
+  showAlert() {
+    this.success = true
+    timer(3000).subscribe(x => {
+      this.success = false
+    })
+  }
 
   // PARA LAS KEYWORD
 
