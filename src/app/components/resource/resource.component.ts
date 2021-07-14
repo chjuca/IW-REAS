@@ -27,7 +27,6 @@ export class ResourceComponent implements OnInit {
   //=====USERDATA========/
   loged: boolean = false;
   userInfo = {} as User;
-  //=========Calification=========
   resourceCalification = 0;
   resourceCalificationArr = []
   calification = {} as Calification;
@@ -150,7 +149,7 @@ export class ResourceComponent implements OnInit {
       }
     });
     this.calification.value = rate_value;
-    this.calificationService.addCalification(this.calification, this.idResource);
+    this.calificationService.addCalification(this.calification, this.resource);
   }
 
   getCalificationValue(califications1: Calification[]) {

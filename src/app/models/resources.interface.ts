@@ -18,4 +18,6 @@ export interface Resources {
     updateDate?: Date;
     isPublic?: boolean;
     resourceName?: string;
+    califications?: number[];
+    avgCalification?: number;
 }
