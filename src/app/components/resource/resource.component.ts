@@ -11,6 +11,9 @@ import { CalificationService } from 'src/app/services/calification.service.servi
 import { Calification } from 'src/app/models/calificationinterace';
 import { User } from 'src/app/models/user.interface';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import * as firebase from 'firebase';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -21,18 +24,21 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./resource.component.css']
 })
 export class ResourceComponent implements OnInit {
+  //=====USERDATA========/
   loged: boolean = false;
   userInfo = {} as User;
   resourceCalification = 0;
   resourceCalificationArr = []
+  calification = {} as Calification;
   resourceCalificationArrleft = []
   resource = {} as Resources;
-  calification = {} as Calification;
   idResource: string;
   subscription: Subscription;
   idVideo = "";
   url = "nothing here";
   califications = [];
+  downloadURL: string = "";
+  downloaded: boolean;
   //========== COMMENTS ==========
   comment = {} as Comments;
   comments = [];
@@ -53,6 +59,7 @@ export class ResourceComponent implements OnInit {
       this.loged = false;
     }
     this.getUrl()
+
     this.route.paramMap.subscribe(params => {
 
       if (params.has('id')) {
@@ -62,6 +69,7 @@ export class ResourceComponent implements OnInit {
     this.subscription = this.resourceService.findResourceByID(this.idResource).subscribe(resource => {
       this.resource = resource;
       this.resource.id = this.idResource;
+      this.getDownloadURI(this.resource)
     });
     this.subscription = this.commentService.getCommentsByResource(this.idResource).subscribe(comments => {
       this.comments = comments;
@@ -90,8 +98,45 @@ export class ResourceComponent implements OnInit {
 
   getUrl() {
     this.url = window.location.href;
+
   }
 
+  getDownloadURI(resource: Resources) {
+    if (resource.resourceName != null) {
+
+      var storage = firebase.storage();
+      var gsReference = storage.refFromURL('gs://recursos-educativos-utpl.appspot.com/resources').child(resource.resourceName)
+      gsReference.getDownloadURL().then((url) => {
+        this.downloadURL = url;
+      }).catch(function (error) {
+        switch (error.code) {
+          case 'storage/object-not-found':
+            console.log("File doesn't exist");
+
+          case 'storage/unauthorized':
+            console.log("User doesn't have permission to access the object");
+
+          case 'storage/canceled':
+            console.log("User canceled the upload");
+
+          case 'storage/unknown':
+            console.log("Unknown error occurred, inspect the server response");
+        }
+      });
+    }else{
+      console.log("No se puede descargar")
+    }
+  }
+
+  openDownloadTab() {
+    if (this.downloadURL != ""){
+      window.open(this.downloadURL)
+    }else{
+      this.downloaded = false;
+      console.log("No se puede descargar")
+    }
+    
+  }
 
   saveCalification() {
     console.log(this.userInfo["rol"])

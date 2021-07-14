@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
+import * as firebase from 'firebase';
 
 
 @Injectable({
@@ -92,6 +93,7 @@ export class ResourceService {
 
     if (e) {
       const id = Math.random().toString(36).substring(2);
+      resource.resourceName = id;
       const file = e.target.files[0];
       const filePath = `resources/${id}`;
       const ref = this.storage.ref(filePath);
@@ -192,5 +194,7 @@ export class ResourceService {
 
     return this.resources;
   }
+
+
 
 }
