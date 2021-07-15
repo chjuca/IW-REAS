@@ -8,8 +8,26 @@
                 Administrador
             </div>
         </div> -->
-        <h4>Recursos encontrados por el titulo "{{decodeSearch}}"</h4>
+        <h4>Recursos encontrados por el filtro "{{decodeSearch}}"</h4>
         <br>
+        <div>
+            <label class="radio-inline">
+                <input class="form-check-input" type="radio" value="filter" [(ngModel)]="filter" name="filter"
+                    value="name" [checked]="true" (change)="onItemChange($event.target.value)" />Titulo
+            </label>
+            <label class="radio-inline">
+                <input class="form-check-input" type="radio" value="filter" [(ngModel)]="filter" name="filter"
+                    value="tags" (change)="onItemChange($event.target.value)" />Etiqueta
+            </label>
+            <label class="radio-inline">
+                <input class="form-check-input" type="radio" value="filter" [(ngModel)]="filter" name="filter"
+                    value="category" (change)="onItemChange($event.target.value)" />Categoria
+            </label>
+            <label class="radio-inline">
+                <input class="form-check-input" type="radio" value="filter" [(ngModel)]="filter" name="filter"
+                    value="type" (change)="onItemChange($event.target.value)" />Tipo
+            </label>
+        </div>
         <br>
         <div class="card-group" *ngFor="let resources of result">
             <div class="card zoom p-1" *ngFor="let resource of resources">

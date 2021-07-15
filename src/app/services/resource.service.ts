@@ -184,6 +184,18 @@ export class ResourceService {
     return this.resources;
   }
 
+  findAllResourcesByType(type: String) {
+    this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.orderBy("type").startAt(type).endAt(type + '\uf8ff'));
+    this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Resources;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+    return this.resources;
+  }
+
   findAllResourcesByKeyword(keyword: String) {
     this.resourcesCollection = this.db.collection(this.COLLECTION_NAME, ref => ref.where("keywords", "array-contains", keyword).where('isPublic', '==', true));
     this.resources = this.resourcesCollection.snapshotChanges().pipe(map(actions => {

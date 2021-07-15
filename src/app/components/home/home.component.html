@@ -33,30 +33,15 @@
     <div class="col-3 ybox redhab " style="font-size: 1.2em;">
         <section class="mlf" style="padding:auto; ">
             <h3 style="font-weight: bold;">Áreas</h3>
-            <ul>
+            <ul *ngFor="let category of categories">
                 <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("economic-and-business")'>Facultad de Ciencias Economicas y
-                        Empresariales</a></li>
+                        (click)='showResourcesByCategory(category.id)'>{{category.name}}</a></li>
                 <br>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("exact-natural-sciences")'>Facultad de Ciencias Exactas y
-                        Naturales</a></li>
-                <br>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("health-area")'>Facultad de Ciencias de la Salud</a></li>
-                <br>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("socio-humanistic-area")'>Facultad de Ciencias Sociales,
-                        Educación y Humanidades</a></li>
-                <br>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("technical-area")'>Facultad de Ingenierias Y Arquitectura</a>
-                </li>
             </ul>
         </section>
 
     </div>
-    <div class="col-9" style="padding:auto; margin-bottom: 1em;" >
+    <div class="col-9" style="padding:auto; margin-bottom: 1em;">
         <br>
         <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos mejor calificados</h2>
 
