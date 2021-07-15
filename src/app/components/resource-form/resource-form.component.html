@@ -72,7 +72,7 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Autor/es:</label>
                     <div class="col-sm-5">
-                        <input type="text" [(ngModel)]="author" class="form-control" name="name"
+                        <input type="text" [(ngModel)]="author" class="form-control" name="author"
                             placeholder="Nombre del Autor">
                         <br>
                         <ul *ngFor="let author of authors">
@@ -109,6 +109,10 @@
                         </div>
                     </div>
                 </ng-template>
+                <br>
+                <div class="alert alert-success" role="alert" *ngIf="success">
+                    EL recurso ha sido subido con exito
+                </div>
                 <br>
                 <div class="form-group row">
                     <div class="col-2">

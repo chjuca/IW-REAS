@@ -126,9 +126,14 @@
                             data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Calificar&nbsp;&nbsp;&nbsp;&nbsp;</button>
                          </div>
                     
-                    <div class="p-3"><button
+                    <div class="p-3"><button (click)="openDownloadTab()"
                             class="special rounded-pill h6">&nbsp;&nbsp;&nbsp;Descargar&nbsp;&nbsp;&nbsp;</button>
                     </div>
+
+                </div>
+                <div *ngIf="downloaded==false" class="alert alert-danger" role="alert">
+                    Actualmente no se puede descargar este recurso,
+                    el documento no ha sido cargado correctamente.
                 </div>
             </div>
             <div class="col-5 mt-2">

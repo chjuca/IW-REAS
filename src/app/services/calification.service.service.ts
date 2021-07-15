@@ -1,5 +1,6 @@
+import { Resources } from './../models/resources.interface';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Calification } from '../models/calificationinterace';
@@ -9,14 +10,23 @@ import { Calification } from '../models/calificationinterace';
 })
 export class CalificationService {
   calificationCollection: AngularFirestoreCollection;
+  resourcesCollection: AngularFirestoreCollection;
+  resourcesDocument: AngularFirestoreDocument;
   COLLECTION_NAME_RESOURCES = 'resources';
   COLLECTION_NAME_CALIFICATION = 'calification';
   califications: Observable<Calification[]>;
   constructor(private db: AngularFirestore) { }
 
-  addCalification(calification: Calification , resourceID: string) {
-    this.calificationCollection = this.db.collection(this.COLLECTION_NAME_RESOURCES).doc(resourceID).collection(this.COLLECTION_NAME_CALIFICATION);
-    //this.calificationCollection.add(calification);
+  addCalification(calification: Calification, resource: Resources) {
+    this.calificationCollection = this.db.collection(this.COLLECTION_NAME_RESOURCES).doc(resource.id).collection(this.COLLECTION_NAME_CALIFICATION);
+    resource.califications.push(Number(calification.value));
+    let suma = 0;
+    resource.califications.forEach(function (numero) {
+      suma += numero;
+    });
+    resource.avgCalification = suma / resource.califications.length;
+    this.resourcesDocument = this.db.collection(this.COLLECTION_NAME_RESOURCES).doc(`${resource.id}`);
+    this.resourcesDocument.update(resource);
     this.calificationCollection.doc(calification.user).set(calification)
   }
   getCalificationByResuorce(resourceID: string): Observable<Calification[]> {
@@ -29,7 +39,7 @@ export class CalificationService {
     }));
     return this.califications;
   }
-  UpdateCalification(){
+  UpdateCalification() {
 
   }
 }

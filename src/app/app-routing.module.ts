@@ -59,7 +59,11 @@ const routes: Routes = [
   {
     path: 'admin/users',
     component: UserComponent
-  }
+  },
+
+  // RUTA PARA REDIRIGIR
+
+  { path: '**', redirectTo: '/home' }
 
 ];
 

@@ -74,8 +74,10 @@
     <div class="col-9" style="padding:auto; margin-bottom: 30px;" >
         <br>
         <h2 class="redhab" style="margin-left: 0.3em;">Recursos mejor calificados</h2>
-        <ng-image-slider [images]="imageObject" [imagePopup]="false"
-            [imageSize]="{width: '300px', height: '200px', space: 20}" #nav>
+
+        <ng-image-slider [images]="topRatedResources" [imagePopup]="false"
+            [imageSize]="{width: '300px', height: '200px', space: 30}" (imageClick)="clickImageCreationDate($event)"
+            #nav>
         </ng-image-slider>
         <h2 class="redhab" style="margin-left: 0.3em;">Recursos recientes</h2>
         <ng-image-slider [images]="resourcesCreationDate" [imagePopup]="false"
