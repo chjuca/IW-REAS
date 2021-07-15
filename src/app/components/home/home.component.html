@@ -12,8 +12,8 @@
 
 <div class="bg-image redhat d-flex flex-row align-items-center img-1">
     <div style="width: 70%; margin-left: auto;margin-right: auto;">
-        <h2>Repositorio</h2>
-        <h1>REAS</h1>
+        <h2>RECURSOS EDUCATIVOS</h2>
+        <h1 style="font-weight: bold; font-size: 3m; margin-top: -10px;">ABIERTOS</h1>
         <div class="input-group mb-3 ">
             <input type="text" class="form-control" [(ngModel)]="search" placeholder="Ingrese un tema...">
             <div class="input-group-append">
@@ -29,9 +29,9 @@
     </div>
 </div>
 
-<div class="row mb-3">
+<div class="row mb-3" style="width: 100%; padding: auto;">
     <div class="col-3 ybox redhab ">
-        <section class="mlf" style="padding:3%;">
+        <section class="mlf" style="padding:auto; ">
             <h3>Áreas</h3>
             <h4>Educación Básica</h4>
             <ul>
@@ -71,20 +71,20 @@
         </section>
 
     </div>
-    <div class="col-9" style="padding:auto">
+    <div class="col-9" style="padding:auto; margin-bottom: 30px;" >
         <br>
         <h2 class="redhab" style="margin-left: 0.3em;">Recursos mejor calificados</h2>
         <ng-image-slider [images]="imageObject" [imagePopup]="false"
-            [imageSize]="{width: '300px', height: '200px', space: 30}" #nav>
+            [imageSize]="{width: '300px', height: '200px', space: 20}" #nav>
         </ng-image-slider>
         <h2 class="redhab" style="margin-left: 0.3em;">Recursos recientes</h2>
         <ng-image-slider [images]="resourcesCreationDate" [imagePopup]="false"
-            [imageSize]="{width: '300px', height: '200px', space: 30}" (imageClick)="clickImageCreationDate($event)"
+            [imageSize]="{width: '300px', height: '200px', space: 20}" (imageClick)="clickImageCreationDate($event)"
             #nav>
         </ng-image-slider>
     </div>
 </div>
-<div style="padding: auto; margin-top: -1em;">
+<div class="border border-warning" style="padding: auto; margin-top: -1em;">
     <div class="centered bg-image redhat img-2" style="color: #F3B926;">
         <div class="col-sm-3" style="text-align: center;">
             <div style="padding: 10px 10px 10px 10px;">
