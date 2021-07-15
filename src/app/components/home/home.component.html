@@ -33,40 +33,25 @@
     <div class="col-3 ybox redhab ">
         <section class="mlf" style="padding:auto; ">
             <h3>Áreas</h3>
-            <h4>Educación Básica</h4>
             <ul>
                 <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("health-area")'>Área de Salud</a></li>
+                        (click)='showResourcesByCategory("economic-and-business")'>Facultad de Ciencias Economicas y
+                        Empresariales</a></li>
+                <br>
                 <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("technical-area")'>Área de Tecnica</a></li>
+                        (click)='showResourcesByCategory("exact-natural-sciences")'>Facultad de Ciencias Exactas y
+                        Naturales</a></li>
+                <br>
                 <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("socio-humanistic-area")'>Área sociohumanistica</a></li>
-            </ul>
-            <h4>Educación Secundaria</h4>
-            <ul>
+                        (click)='showResourcesByCategory("health-area")'>Facultad de Ciencias de la Salud</a></li>
+                <br>
                 <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("health-area")'>Área de Salud</a></li>
+                        (click)='showResourcesByCategory("socio-humanistic-area")'>Facultad de Ciencias Sociales,
+                        Educación y Humanidades</a></li>
+                <br>
                 <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("technical-area")'>Área de Tecnica</a></li>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("socio-humanistic-area")'>Área sociohumanistica</a></li>
-            </ul>
-            <h4>Educación Universitaria</h4>
-            <ul>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("health-area")'>Área de Salud</a></li>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("technical-area")'>Área de Tecnica</a></li>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("socio-humanistic-area")'>Área sociohumanistica</a></li>
-            </ul>
-            <ul>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("health-area")'>Área de Salud</a></li>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("technical-area")'>Área de Tecnica</a></li>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("socio-humanistic-area")'>Área sociohumanistica</a></li>
+                        (click)='showResourcesByCategory("technical-area")'>Facultad de Ingenierias Y Arquitectura</a>
+                </li>
             </ul>
         </section>
 
@@ -90,33 +75,40 @@
     <div class="centered bg-image redhat img-2" style="color: #F3B926;">
         <div class="col-sm-3" style="text-align: center;">
             <div style="padding: 10px 10px 10px 10px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                    <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                    class="bi bi-file-text" viewBox="0 0 16 16">
+                    <path
+                        d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z" />
+                    <path
+                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
                 </svg>
             </div>
-            <h3 class="wh2" >+{{resourcesCount}}</h3>
+            <h3 class="wh2">+{{resourcesCount}}</h3>
             <h5 class="wh1">RECURSOS</h5>
         </div>
         <div class="col-sm-3" style="text-align: center;">
             <div style="padding: 10px 10px 10px 10px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                    class="bi bi-person-square" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path
+                        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
                 </svg>
             </div>
-            <h3 class="wh2" >+{{usersCount}}</h3>
+            <h3 class="wh2">+{{usersCount}}</h3>
             <h5 class="wh1">ESTUDIANTES</h5>
         </div>
         <div class="col-sm-3" style="text-align: center;">
             <div style="padding: 10px 10px 10px 10px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-play-btn" viewBox="0 0 16 16">
-                    <path d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
-                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                    class="bi bi-play-btn" viewBox="0 0 16 16">
+                    <path d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />
+                    <path
+                        d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
                 </svg>
             </div>
-            <h3 class="wh2" >+{{multimediaCount}}</h3>
-            <h5 class="wh1" >MULTIMEDIA</h5>
+            <h3 class="wh2">+{{multimediaCount}}</h3>
+            <h5 class="wh1">MULTIMEDIA</h5>
         </div>
     </div>
 </div>
