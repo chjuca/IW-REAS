@@ -28,6 +28,7 @@ import { UserNavbarComponent } from './components/user-navbar/user-navbar.compon
 import { ResourcesKeywordsComponent } from './components/resources-keywords/resources-keywords.component';
 import { UserComponent } from './components/user/user.component';
 import { ResourcesSearchComponent } from './components/resources-search/resources-search.component';
+import { ResourceEditComponent } from './components/resource-edit/resource-edit.component';
 
 
 
@@ -47,6 +48,7 @@ import { ResourcesSearchComponent } from './components/resources-search/resource
     ResourcesKeywordsComponent,
     UserComponent,
     ResourcesSearchComponent,
+    ResourceEditComponent,
 
   ],
   imports: [

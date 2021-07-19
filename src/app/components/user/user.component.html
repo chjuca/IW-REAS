@@ -1,4 +1,11 @@
 <div class="container">
+
+    <br>
+    <div>
+        <input type="text" class="form-control" (input)="onSearchChange($event.target.value)"
+            placeholder="Filtrar por email...">
+    </div>
+    <br>
     <table class="table">
         <thead>
             <tr>
@@ -7,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of users">
+            <tr *ngFor="let user of usersFilter">
                 <td scope="row">
                     <p>{{user.email}}</p>
                 </td>

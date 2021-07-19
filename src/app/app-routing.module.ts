@@ -1,3 +1,4 @@
+import { ResourceEditComponent } from './components/resource-edit/resource-edit.component';
 import { ResourcesSearchComponent } from './components/resources-search/resources-search.component';
 import { UserComponent } from './components/user/user.component';
 import { ResourcesKeywordsComponent } from './components/resources-keywords/resources-keywords.component';
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'resource/:id',
     component: ResourceComponent
+  },
+  {
+    path: 'resource/:id/edit',
+    component: ResourceEditComponent
   },
   {
     path: 'category/:category',
