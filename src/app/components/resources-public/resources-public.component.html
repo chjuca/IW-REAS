@@ -12,6 +12,7 @@
         <br>
         <div class="card-group" *ngFor="let resources of result">
             <div class="card zoom p-1" *ngFor="let resource of resources">
+
                 <img class="card-img-top" src="{{resource.banner}}" alt="{{resource.title}}">
                 <div class="card-body">
                     <h5 class="card-title">{{resource.title}}</h5>

@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
   users = [];
   subscription: Subscription;
   usersFilter = []
+  onChange = false;
 
   constructor(public userService: UserService) { }
 
@@ -27,7 +28,12 @@ export class UserComponent implements OnInit {
   }
 
   updateRole(user: User) {
-    this.userService.updateRole(user);
+  var delayInMiliseconds = 3000;
+  if(this.userService.updateRole(user)){
+    this.onChange = true;
+  }else{
+    this.onChange = false;
+  }
   }
 
   onSearchChange(searchValue: string): void {
@@ -40,3 +46,5 @@ export class UserComponent implements OnInit {
   }
 
 }
+
+

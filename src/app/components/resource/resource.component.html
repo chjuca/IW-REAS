@@ -11,7 +11,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <!-- InModal  -->
                 <div class="modal-body">
                     <div class="container">
                         <div class="rate">
@@ -36,7 +35,6 @@
             </div>
         </div>
     </div>
-    <!-- Meterle la logica de roles ty -->
     <div *ngIf="this.userInfo['rol'] == 'admin' " class="container">
         <div class="rgth">
             <button type="button" class="btn btn-secondary bpd" (click)="editResource(resource)">Editar</button>
@@ -49,12 +47,18 @@
     <div class="container">
         <div class="row  ">
             <div class="col-6 mt-3">
-                <h2>{{resource.category}}</h2>
+                <h2>
+                    {{resource.title}}
+                </h2>
             </div>
             <div class="col-4 mt-3">
                 <p font style="color: black; opacity: 0.6; font-size: smaller; font-weight: 500;">
                     {{resource.creationDate?.seconds * 1000 | date: "dd/MM/yy" }}</p>
             </div>
+        </div>
+
+        <div class="col-6 mt-2">
+            <h4 style="color: black;">{{resource.category}}</h4>
         </div>
         <div *ngIf="resourceCalification != 0; else Nocalification" class="col-4">
             <span *ngFor="let item of resourceCalificationArr" class="fa fa-star checked"></span>
@@ -65,12 +69,8 @@
                 <p>Aún no hay calificación</p>
             </div>
         </ng-template>
-        <div class="col-6 mt-2">
-            <h4 style="color: black;">{{resource.title}}</h4>
-        </div>
         <div class="col-5 mt-2">
             <li *ngFor="let author of resource.authors" style="color: black; opacity: 0.6;">{{author}}</li>
-            <!-- <h6 *ngFor="let author of resource.authors" style="color: black; opacity: 0.6;">{{author}}</h6> -->
             <hr>
         </div>
     </div>
@@ -136,7 +136,7 @@
                 </div>
             </div>
             <div class="col-5 mt-2">
-                <img src={{resource.url}} class="img-fluid max-width: 100%; rounded mx-auto" alt="">
+                <img src={{resource.banner}} class="img-fluid max-width: 100%; rounded mx-auto" alt="">
             </div>
         </div>
     </div>
