@@ -13,6 +13,7 @@ import * as firebase from 'firebase';
 export class ResourceService {
 
   uploadPercent: Observable<number>;
+  uploadPercentBanner: Observable<number>;
   resourcesCollection: AngularFirestoreCollection;
   resourcesDocument: AngularFirestoreDocument;
   resources: Observable<Resources[]>;
@@ -89,9 +90,13 @@ export class ResourceService {
 
   addResource(resource: Resources) {
     this.resourcesCollection = this.db.collection(this.COLLECTION_NAME);
-    console.log(resource.category);
+    console.log("Mi banner es: "+resource.banner)
+    if(resource.banner.includes("https:")){
+      console.log("Imagen cargada correctamente")
+    }else{
+      resource.banner = this.banners[resource.category]; 
+    }
     resource.creationDate = new Date();
-    resource.banner = this.banners[resource.category];
     resource.isPublic = false;
     resource.avgCalification = 0;
     resource.califications = [];
@@ -116,11 +121,28 @@ export class ResourceService {
 
   }
 
-  onUpload(resource: Resources, e: any) {
+  onUpload(resource: Resources, e: any, d?: any) {
+    const id = Math.random().toString(36).substring(2);
+
+    if (d != undefined){
+      const banner = d.target.files[0];
+      const filePathBanner = `banners/${id}`;
+      const refBanner = this.storage.ref(filePathBanner);
+      const taskBanner = this.storage.upload(filePathBanner, banner);
+      this.uploadPercentBanner = taskBanner.percentageChanges();
+      taskBanner.snapshotChanges().pipe(finalize(() =>{
+        refBanner.getDownloadURL().subscribe(url =>{
+          resource.banner = url;
+        })
+      })).subscribe();
+
+    }else{
+      console.log("Se debe cargar una imagen")
+    }
 
     if (e) {
-      const id = Math.random().toString(36).substring(2);
       resource.resourceName = id;
+      resource.banner = id;
       const file = e.target.files[0];
       const filePath = `resources/${id}`;
       const ref = this.storage.ref(filePath);
@@ -129,7 +151,10 @@ export class ResourceService {
       task.snapshotChanges().pipe(finalize(() => {
         ref.getDownloadURL().subscribe(urlFile => {
           resource.url = urlFile;
-          (resource.id) ? this.updateResource(resource) : this.addResource(resource);
+          setTimeout( ()  => {
+            (resource.id) ? this.updateResource(resource) : this.addResource(resource);
+          }, 5000);
+
         });
       })
       ).subscribe();

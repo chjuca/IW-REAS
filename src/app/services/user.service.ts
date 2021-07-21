@@ -30,7 +30,12 @@ export class UserService {
   }
 
   updateRole(user: User) {
+    
     this.userDocument = this.db.collection(this.COLLECTION_NAME).doc(`${user.email}`);
-    this.userDocument.update(user);
+    if (this.userDocument.update(user))
+      return true
+    else{
+      return false
+    }
   }
 }

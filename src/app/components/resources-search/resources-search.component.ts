@@ -161,5 +161,11 @@ export class ResourcesSearchComponent implements OnInit {
     this.current = []
     this.resources = [];
   }
+  searchResources() {
+    if (this.search.length > 0) {
+      this.router.navigate(['search', encodeURI(this.search)]);
+      this.ngOnInit()
+    }
+  }
 
 }
