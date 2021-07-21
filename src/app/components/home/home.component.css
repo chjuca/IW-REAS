@@ -1,5 +1,5 @@
 .centered {
-    display: flex;
+    display: flex; 
     align-items: center;
     justify-content: center;
 }
@@ -68,7 +68,7 @@
     background-image: url('https://i.ibb.co/GPZKmy7/12.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
-    height: 18em;
+    height: 400px;
     width: 100%;
 }
 .img-3{
