@@ -123,19 +123,19 @@ export class ResourceComponent implements OnInit {
             console.log("Unknown error occurred, inspect the server response");
         }
       });
-    }else{
+    } else {
       console.log("No se puede descargar")
     }
   }
 
   openDownloadTab() {
-    if (this.downloadURL != ""){
+    if (this.downloadURL != "") {
       window.open(this.downloadURL)
-    }else{
+    } else {
       this.downloaded = false;
       console.log("No se puede descargar")
     }
-    
+
   }
 
   saveCalification() {
@@ -173,6 +173,16 @@ export class ResourceComponent implements OnInit {
   }
   publicResource(resource: Resources) {
     this.resourceService.publicResource(resource);
+    this.router.navigate(['home']);
+  }
+
+  editResource(resource: Resources) {
+    this.router.navigate(['resource', resource.id, 'edit']);
+  }
+
+  deleteResource(resource: Resources) {
+    this.resourceService.deleteResource(resource);
+    this.router.navigate(['home']);
   }
 
 }

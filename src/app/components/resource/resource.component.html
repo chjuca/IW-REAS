@@ -33,8 +33,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-warning"
-                        data-bs-dismiss="modal"  (click)="saveCalification()"><strong>Guardar</strong></button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
+                        (click)="saveCalification()"><strong>Guardar</strong></button>
                 </div>
             </div>
         </div>
@@ -42,7 +42,8 @@
     <!-- Meterle la logica de roles ty -->
     <div *ngIf="this.userInfo['rol'] == 'admin' " class="container">
         <div class="rgth">
-            <button type="button" class="btn btn-primary" (click)="publicResource(resource)">Publicar</button>
+            <button type="button" class="btn btn-secondary bpd" (click)="editResource(resource)">Editar</button>
+            <button type="button" class="btn btn-primary bpd" (click)="publicResource(resource)">Publicar</button>
             <button type="button" class="btn btn-danger bpd">Eliminar</button>
         </div>
         <br>
@@ -59,7 +60,7 @@
             </div>
         </div>
         <div *ngIf="resourceCalification != 0; else Nocalification" class="col-4">
-            <span *ngFor="let item of resourceCalificationArr"  class="fa fa-star checked"></span> 
+            <span *ngFor="let item of resourceCalificationArr" class="fa fa-star checked"></span>
             <span *ngFor="let item of resourceCalificationArrleft" class="fa fa-star"></span>
         </div>
         <ng-template #Nocalification>
@@ -118,14 +119,15 @@
                     *ngFor="let item of resource.keywords">&nbsp;{{item}}&nbsp;</a>
                 <div class="d-flex flex-row justify-content-center mt-3">
                     <div></div>
-                    <div *ngIf="loged==false" class="p-3"><button disabled class="special rounded-pill h6" data-bs-toggle="modal"
+                    <div *ngIf="loged==false" class="p-3"><button disabled class="special rounded-pill h6"
+                            data-bs-toggle="modal"
                             data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Calificar&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     </div>
-                 
-                        <div *ngIf="loged==true" class="p-3"><button  class="special rounded-pill h6" data-bs-toggle="modal"
+
+                    <div *ngIf="loged==true" class="p-3"><button class="special rounded-pill h6" data-bs-toggle="modal"
                             data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Calificar&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                         </div>
-                    
+                    </div>
+
                     <div class="p-3"><button (click)="openDownloadTab()"
                             class="special rounded-pill h6">&nbsp;&nbsp;&nbsp;Descargar&nbsp;&nbsp;&nbsp;</button>
                     </div>
@@ -152,7 +154,7 @@
                 <button disabled (click)='addComment()' class="rounded btn btn-success" type="button">Comentar</button>
             </div>
             <div *ngIf="loged==true" class="input-group-append ml-5">
-                <button  (click)='addComment()' class="rounded btn btn-success" type="button">Comentar</button>
+                <button (click)='addComment()' class="rounded btn btn-success" type="button">Comentar</button>
             </div>
         </div>
 
@@ -162,8 +164,9 @@
                     <div class="col">
                         <div class="row">
                             <div class="col-1 mt-3">
-                                <div class=""><img src="https://icon-library.com/images/no-user-image-icon/no-user-image-icon-26.jpg" alt="user" width="100%"
-                                        class="rounded-circle ">
+                                <div class=""><img
+                                        src="https://icon-library.com/images/no-user-image-icon/no-user-image-icon-26.jpg"
+                                        alt="user" width="100%" class="rounded-circle ">
                                 </div>
                             </div>
                             <div class="col-11 ">

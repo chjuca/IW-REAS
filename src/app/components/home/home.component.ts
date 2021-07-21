@@ -16,7 +16,9 @@ export class HomeComponent implements OnInit {
   @ViewChild('nav', { static: false }) slider: NgImageSliderComponent;
 
   subscription: Subscription;
+  category = {} as Category;
   resources = [];
+  categories = [];
   resourcesCreationDate = [];
   topRatedResources = [];
   search = "";
@@ -24,7 +26,7 @@ export class HomeComponent implements OnInit {
   usersCount = 0;
   multimediaCount = 0;
 
-  constructor(public resourceService: ResourceService, public userService: UserService, public router: Router) { }
+  constructor(public resourceService: ResourceService, public userService: UserService, public categoryService: CategoryService, public router: Router) { }
 
   ngOnInit() {
     this.countResources();
@@ -52,6 +54,9 @@ export class HomeComponent implements OnInit {
           alt: resource.title
         })
       });
+    })
+    this.subscription = this.categoryService.getCategories().subscribe(categories => {
+      this.categories = categories;
     })
   }
 
