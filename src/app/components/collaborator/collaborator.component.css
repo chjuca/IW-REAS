@@ -1,0 +1,70 @@
+strong{
+    color: #003F72;
+    font-weight: 600;
+}
+.centered {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.redhat{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #FFFF;
+}
+.redha1{
+    font-family: 'Poppins', sans-serif;
+    color: #FFFF;
+}
+.redhab{
+    font-family: 'Poppins', sans-serif;
+    color: #003F72;
+}
+.form-control{
+    padding: auto;
+}
+.text-decoration-none{
+    color: #003F72;
+}
+.wh{
+    color: white;
+}
+.wh1{
+    color: white;
+    font-weight: 700;
+}
+.wh2{
+    color: white;
+    font-size: 1.5em;
+}
+.t3{
+    font-weight: 700;
+}
+.redhatbold{
+    font-family: 'Red Hat Display';
+    font-weight: 700;
+    font-size: 2em; 
+    color: #FFFF;
+    padding: 0.3em;
+    margin-left: 0.3em;
+}
+.butyell{
+    background-color:#F3B926; 
+    width:8em;
+    color:#003F72;
+}
+.butblu{
+    background-color:#003F72; 
+    width:7em; 
+    color: #FFFF; 
+    border-color: #F3B926;
+}
+.fnt{
+    font-size: 0.8em;
+}
+
+.img-3{
+    background-image: url('https://i.ibb.co/bL68kgS/15.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+}

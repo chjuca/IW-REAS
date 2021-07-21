@@ -1,15 +1,3 @@
-<!-- <header>
-    <div>
-        <nav class="navbar navbar-light" style="background-color: #003F72;">
-            <a class="navbar-brand redhatbold">UTPL</a>
-            <form class="form-inline">
-                <button class="btn rounded-pill redhat butyell" type="submit">Iniciar Sesión</button>
-                <button class="btn rounded-pill redhat butblu" type="submit">Registrarse</button>
-            </form>
-        </nav>
-    </div>
-</header> -->
-
 <div class="bg-image redhat d-flex flex-row align-items-center img-1">
     <div style="width: 60%; margin-left: auto;margin-right: auto;">
         <h2>RECURSOS EDUCATIVOS</h2>
@@ -27,30 +15,13 @@
 <div class="row w-100 center">
     <div class="col-sm-3 ybox">
         <div class="row">
-            <section class="container mx-auto" style="margin-top: 2em; ">
+            <section class="mlf" style="padding:auto; ">
                 <h3 style="font-weight: bold; color: #003F72;">Áreas</h3>
-                <br>
-                <ul>
+                <ul *ngFor="let category of categories">
                     <li><a class="text-decoration-none" [routerLink]=""
-                            (click)='showResourcesByCategory("economic-and-business")'>Facultad de Ciencias Economicas y
-                            Empresariales</a></li>
+                            (click)='showResourcesByCategory(category.id)'>{{category.name}}</a></li>
                     <br>
-                    <li><a class="text-decoration-none" [routerLink]=""
-                            (click)='showResourcesByCategory("exact-natural-sciences")'>Facultad de Ciencias Exactas y
-                            Naturales</a></li>
-                    <br>
-                    <li><a class="text-decoration-none" [routerLink]=""
-                            (click)='showResourcesByCategory("health-area")'>Facultad de Ciencias de la Salud</a></li>
-                    <br>
-                    <li><a class="text-decoration-none" [routerLink]=""
-                            (click)='showResourcesByCategory("socio-humanistic-area")'>Facultad de Ciencias Sociales,
-                            Educación y Humanidades</a></li>
-                    <br>
-                    <li><a class="text-decoration-none" [routerLink]=""
-                            (click)='showResourcesByCategory("technical-area")'>Facultad de Ingenierias Y Arquitectura</a>
-                    </li>
                 </ul>
-                <br>
             </section>
         </div>
     </div>
@@ -59,9 +30,11 @@
             <br>
             <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos mejor calificados</h2>
             <ng-image-slider [images]="topRatedResources" [imagePopup]="false"
-                [imageSize]="{width: '300px', height: '200px', space: 25}" (imageClick)="clickImageCreationDate($event)"
+                [imageSize]="{width: '300px', height: '200px', space: 25}" (imageClick)="clickImageTopRatedResources($event)"
                 #nav>
             </ng-image-slider>
+            <br>
+            <br>
             <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos recientes</h2>
             <ng-image-slider [images]="resourcesCreationDate" [imagePopup]="false"
                 [imageSize]="{width: '300px', height: '200px', space: 25}" (imageClick)="clickImageCreationDate($event)"
@@ -70,83 +43,6 @@
         </div>
   </div>
 </div>
-
-<!-- Navbar y slides -->
-
-<!-- <div class="row mb-3" style="width: 100%; padding: auto;">
-    <div class="col-3 ybox redhab " style="font-size: 1.2em;">
-        <section class="mlf" style="padding:auto; ">
-            <h3 style="font-weight: bold;">Áreas</h3>
-            <ul *ngFor="let category of categories">
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory(category.id)'>{{category.name}}</a></li>
-                <br>
-            </ul>
-        </section>
-
-    </div>
-    <div class="col-9" style="padding:auto; margin-bottom: 1em;">
-        <br>
-        <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos mejor calificados</h2>
-
-        <ng-image-slider [images]="topRatedResources" [imagePopup]="false"
-            [imageSize]="{width: '300px', height: '200px', space: 20}" (imageClick)="clickImageCreationDate($event)"
-            #nav>
-        </ng-image-slider>
-        <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos recientes</h2>
-        <ng-image-slider [images]="resourcesCreationDate" [imagePopup]="false"
-            [imageSize]="{width: '300px', height: '200px', space: 20}" (imageClick)="clickImageCreationDate($event)"
-            #nav>
-        </ng-image-slider>
-    </div>
-</div>
- -->
-
- <!-- NAV OPCION 2 
-<div class="pos-f-t">
-    <div class="collapse" id="navbarToggleExternalContent">
-      <div class="bg-dark p-4">
-        <h5 class="text-white h4">Collapsed content</h5>
-        <span class="text-muted">Toggleable via the navbar brand.</span>
-      </div>
-    </div>
-    <nav class="navbar navbar-dark" style="background-color: #003F72;">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
-  </div> -->
-
-
- <!-- navbar
-<div class="container" style="width: 40%; padding: auto;">
-    <div class="ybox redhab " style="font-size: 1.2em;">
-        <section class="mlf" style="padding:auto; ">
-            <h3 style="font-weight: bold;">Áreas</h3>
-            <ul>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("economic-and-business")'>Facultad de Ciencias Economicas y
-                        Empresariales</a></li>
-                <br>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("exact-natural-sciences")'>Facultad de Ciencias Exactas y
-                        Naturales</a></li>
-                <br>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("health-area")'>Facultad de Ciencias de la Salud</a></li>
-                <br>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("socio-humanistic-area")'>Facultad de Ciencias Sociales,
-                        Educación y Humanidades</a></li>
-                <br>
-                <li><a class="text-decoration-none" [routerLink]=""
-                        (click)='showResourcesByCategory("technical-area")'>Facultad de Ingenierias Y Arquitectura</a>
-                </li>
-            </ul>
-        </section>
-
-    </div>
-    </div> -->
 
 <!-- SLIDER -->
 
@@ -195,16 +91,6 @@
       </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 <footer class="text-center text-lg-start bg-image text-muted fnt img-3 ">
     <section style="padding: 0.5%">

@@ -182,7 +182,7 @@ export class ResourceComponent implements OnInit {
 
   deleteResource(resource: Resources) {
     this.resourceService.deleteResource(resource);
-    this.router.navigate(['home']);
+    this.router.navigate(['admin','resources']);
   }
 
 }

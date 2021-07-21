@@ -67,6 +67,9 @@ export class HomeComponent implements OnInit {
   clickImageCreationDate(event) {
     this.router.navigate(['resource', this.resourcesCreationDate[event].id]);
   }
+  clickImageTopRatedResources(event) {
+    this.router.navigate(['resource', this.topRatedResources[event].id]);
+  }
 
   searchResources() {
     if (this.search.length > 0) {
