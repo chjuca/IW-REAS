@@ -29,6 +29,7 @@ import { ResourcesKeywordsComponent } from './components/resources-keywords/reso
 import { UserComponent } from './components/user/user.component';
 import { ResourcesSearchComponent } from './components/resources-search/resources-search.component';
 import { ResourceEditComponent } from './components/resource-edit/resource-edit.component';
+import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 
 
 
@@ -49,6 +50,7 @@ import { ResourceEditComponent } from './components/resource-edit/resource-edit.
     UserComponent,
     ResourcesSearchComponent,
     ResourceEditComponent,
+    CollaboratorComponent,
 
   ],
   imports: [
