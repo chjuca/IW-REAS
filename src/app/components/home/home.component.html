@@ -11,25 +11,69 @@
 </header> -->
 
 <div class="bg-image redhat d-flex flex-row align-items-center img-1">
-    <div style="width: 70%; margin-left: auto;margin-right: auto;">
+    <div style="width: 60%; margin-left: auto;margin-right: auto;">
         <h2>RECURSOS EDUCATIVOS</h2>
         <h1 style="font-weight: bold; font-size: 3m; margin-top: -10px;">ABIERTOS</h1>
-        <div class="input-group mb-3 ">
-            <input type="text" class="form-control" [(ngModel)]="search" placeholder="Ingrese un tema...">
+        <div class="input-group mb-3 " >
+            <input type="text" class="form-control" style="font-size: 1.3em;" [(ngModel)]="search" placeholder="Ingrese un tema...">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" (click)="searchResources()"
-                    style="background-color: #003F72; color: #ffff;" type="button">Buscar</button>
+                    style="background-color: #003F72; color: #ffff; font-size: 1.3em;" type="button">Buscar</button>
             </div>
         </div>
-        <!-- <div>
-            <input class="form-control rounded-pill" type="text" [(ngModel)]="search" placeholder="Ingrese un tema..."
-                style="width: 80%">
-            <button (click)="searchResources()" class="btn btn-success">Buscar</button>
-        </div> -->
     </div>
 </div>
 
-<div class="row mb-3" style="width: 100%; padding: auto;">
+<div class="row w-100 center">
+    <div class="col-sm-3 ybox">
+        <div class="row">
+            <section class="container mx-auto" style="margin-top: 2em; ">
+                <h3 style="font-weight: bold; color: #003F72;">Áreas</h3>
+                <br>
+                <ul>
+                    <li><a class="text-decoration-none" [routerLink]=""
+                            (click)='showResourcesByCategory("economic-and-business")'>Facultad de Ciencias Economicas y
+                            Empresariales</a></li>
+                    <br>
+                    <li><a class="text-decoration-none" [routerLink]=""
+                            (click)='showResourcesByCategory("exact-natural-sciences")'>Facultad de Ciencias Exactas y
+                            Naturales</a></li>
+                    <br>
+                    <li><a class="text-decoration-none" [routerLink]=""
+                            (click)='showResourcesByCategory("health-area")'>Facultad de Ciencias de la Salud</a></li>
+                    <br>
+                    <li><a class="text-decoration-none" [routerLink]=""
+                            (click)='showResourcesByCategory("socio-humanistic-area")'>Facultad de Ciencias Sociales,
+                            Educación y Humanidades</a></li>
+                    <br>
+                    <li><a class="text-decoration-none" [routerLink]=""
+                            (click)='showResourcesByCategory("technical-area")'>Facultad de Ingenierias Y Arquitectura</a>
+                    </li>
+                </ul>
+                <br>
+            </section>
+        </div>
+    </div>
+  <div class="col-sm-9" >
+        <div class="container" style="padding:auto; margin-bottom: 1em;"  >
+            <br>
+            <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos mejor calificados</h2>
+            <ng-image-slider [images]="topRatedResources" [imagePopup]="false"
+                [imageSize]="{width: '300px', height: '200px', space: 25}" (imageClick)="clickImageCreationDate($event)"
+                #nav>
+            </ng-image-slider>
+            <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos recientes</h2>
+            <ng-image-slider [images]="resourcesCreationDate" [imagePopup]="false"
+                [imageSize]="{width: '300px', height: '200px', space: 25}" (imageClick)="clickImageCreationDate($event)"
+                #nav>
+            </ng-image-slider>
+        </div>
+  </div>
+</div>
+
+<!-- Navbar y slides -->
+
+<!-- <div class="row mb-3" style="width: 100%; padding: auto;">
     <div class="col-3 ybox redhab " style="font-size: 1.2em;">
         <section class="mlf" style="padding:auto; ">
             <h3 style="font-weight: bold;">Áreas</h3>
@@ -56,9 +100,61 @@
         </ng-image-slider>
     </div>
 </div>
-<div class="border border-warning" style="padding: auto; margin-top: -1em;">
-    <div class="centered bg-image redhat img-2" style="color: #F3B926;">
-        <div class="col-sm-3" style="text-align: center;">
+ -->
+
+ <!-- NAV OPCION 2 
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-dark p-4">
+        <h5 class="text-white h4">Collapsed content</h5>
+        <span class="text-muted">Toggleable via the navbar brand.</span>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark" style="background-color: #003F72;">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div> -->
+
+
+ <!-- navbar
+<div class="container" style="width: 40%; padding: auto;">
+    <div class="ybox redhab " style="font-size: 1.2em;">
+        <section class="mlf" style="padding:auto; ">
+            <h3 style="font-weight: bold;">Áreas</h3>
+            <ul>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("economic-and-business")'>Facultad de Ciencias Economicas y
+                        Empresariales</a></li>
+                <br>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("exact-natural-sciences")'>Facultad de Ciencias Exactas y
+                        Naturales</a></li>
+                <br>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("health-area")'>Facultad de Ciencias de la Salud</a></li>
+                <br>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("socio-humanistic-area")'>Facultad de Ciencias Sociales,
+                        Educación y Humanidades</a></li>
+                <br>
+                <li><a class="text-decoration-none" [routerLink]=""
+                        (click)='showResourcesByCategory("technical-area")'>Facultad de Ingenierias Y Arquitectura</a>
+                </li>
+            </ul>
+        </section>
+
+    </div>
+    </div> -->
+
+<!-- SLIDER -->
+
+<div class="border border-warning" style="padding: auto;">
+<div class="bg-image img-2 centered" style="text-align: center; color: #F3B926;">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm" style="text-align: center;">
             <div style="padding: 10px 10px 10px 10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                     class="bi bi-file-text" viewBox="0 0 16 16">
@@ -70,8 +166,8 @@
             </div>
             <h3 class="wh2">+{{resourcesCount}}</h3>
             <h5 class="wh1">RECURSOS</h5>
-        </div>
-        <div class="col-sm-3" style="text-align: center;">
+          </div>
+          <div class="col-sm" style="text-align: center;">
             <div style="padding: 10px 10px 10px 10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                     class="bi bi-person-square" viewBox="0 0 16 16">
@@ -82,8 +178,8 @@
             </div>
             <h3 class="wh2">+{{usersCount}}</h3>
             <h5 class="wh1">ESTUDIANTES</h5>
-        </div>
-        <div class="col-sm-3" style="text-align: center;">
+          </div>
+          <div class="col-sm" style="text-align: center;">
             <div style="padding: 10px 10px 10px 10px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                     class="bi bi-play-btn" viewBox="0 0 16 16">
@@ -94,9 +190,22 @@
             </div>
             <h3 class="wh2">+{{multimediaCount}}</h3>
             <h5 class="wh1">MULTIMEDIA</h5>
+          </div>
         </div>
-    </div>
+      </div>
 </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 <footer class="text-center text-lg-start bg-image text-muted fnt img-3 ">
     <section style="padding: 0.5%">
         <div class="container text-center text-md-start mt-5 mgrt">
