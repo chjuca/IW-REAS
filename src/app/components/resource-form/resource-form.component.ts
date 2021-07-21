@@ -17,7 +17,6 @@ import { timer } from 'rxjs';
 export class ResourceFormComponent implements OnInit {
   @ViewChild('inputFile', { static: false }) myInputVariable: ElementRef;
 
-
   subscription: Subscription;
 
   // LISTS
@@ -34,6 +33,7 @@ export class ResourceFormComponent implements OnInit {
   category = {} as Category;
   resources = [];
   event: any;
+  evenBanner: any;
   uploadPercent = 0;
   author = '';
   subcategory = '';
@@ -50,7 +50,7 @@ export class ResourceFormComponent implements OnInit {
   addResource() {
     this.resource.keywords = this.keywords;
     this.resource.authors = this.authors;
-    this.resourceService.onUpload(this.resource, this.event);
+    this.resourceService.onUpload(this.resource, this.event, this.evenBanner);
     if (this.resource.type != "Video") {
       this.resourceService.uploadPercent.subscribe(uploadPercent => {
         this.uploadPercent = uploadPercent;
@@ -60,6 +60,7 @@ export class ResourceFormComponent implements OnInit {
           this.authors = [];
           this.category = {};
           this.myInputVariable.nativeElement.value = '';
+
           this.showAlert()
         }
       })
@@ -69,12 +70,16 @@ export class ResourceFormComponent implements OnInit {
       this.authors = [];
       this.category = {};
       this.myInputVariable.nativeElement.value = '';
+
       this.showAlert()
     }
   }
 
   setEvent(e: any) {
     this.event = e;
+  }
+  setEventBanner(e: any) {
+    this.evenBanner = e;
   }
 
   validateForm(): boolean {

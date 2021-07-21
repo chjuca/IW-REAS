@@ -6,6 +6,13 @@
             placeholder="Filtrar por email...">
     </div>
     <br>
+    <div>
+        <div class="container" id="alert" *ngIf="onChange == true"> 
+            <div class="alert alert-success" role="alert" >
+                Se ha actualizado correctamente
+              </div>
+        </div>
+    </div>
     <table class="table">
         <thead>
             <tr>
