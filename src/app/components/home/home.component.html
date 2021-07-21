@@ -15,30 +15,13 @@
 <div class="row w-100 center">
     <div class="col-sm-3 ybox">
         <div class="row">
-            <section class="container mx-auto" style="margin-top: 2em; ">
+            <section class="mlf" style="padding:auto; ">
                 <h3 style="font-weight: bold; color: #003F72;">Áreas</h3>
-                <br>
-                <ul>
+                <ul *ngFor="let category of categories">
                     <li><a class="text-decoration-none" [routerLink]=""
-                            (click)='showResourcesByCategory("economic-and-business")'>Facultad de Ciencias Económicas y
-                            Empresariales</a></li>
+                            (click)='showResourcesByCategory(category.id)'>{{category.name}}</a></li>
                     <br>
-                    <li><a class="text-decoration-none" [routerLink]=""
-                            (click)='showResourcesByCategory("exact-natural-sciences")'>Facultad de Ciencias Exactas y
-                            Naturales</a></li>
-                    <br>
-                    <li><a class="text-decoration-none" [routerLink]=""
-                            (click)='showResourcesByCategory("health-area")'>Facultad de Ciencias de la Salud</a></li>
-                    <br>
-                    <li><a class="text-decoration-none" [routerLink]=""
-                            (click)='showResourcesByCategory("socio-humanistic-area")'>Facultad de Ciencias Sociales,
-                            Educación y Humanidades</a></li>
-                    <br>
-                    <li><a class="text-decoration-none" [routerLink]=""
-                            (click)='showResourcesByCategory("technical-area")'>Facultad de Ingeniería Y Arquitectura</a>
-                    </li>
                 </ul>
-                <br>
             </section>
         </div>
     </div>
@@ -47,7 +30,7 @@
             <br>
             <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos mejor calificados</h2>
             <ng-image-slider [images]="topRatedResources" [imagePopup]="false"
-                [imageSize]="{width: '300px', height: '200px', space: 25}" (imageClick)="clickImageCreationDate($event)"
+                [imageSize]="{width: '300px', height: '200px', space: 25}" (imageClick)="clickImageTopRatedResources($event)"
                 #nav>
             </ng-image-slider>
             <br>

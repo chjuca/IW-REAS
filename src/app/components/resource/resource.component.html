@@ -39,7 +39,7 @@
         <div class="rgth">
             <button type="button" class="btn btn-secondary bpd" (click)="editResource(resource)">Editar</button>
             <button type="button" class="btn btn-primary bpd" (click)="publicResource(resource)">Publicar</button>
-            <button type="button" class="btn btn-danger bpd">Eliminar</button>
+            <button type="button" class="btn btn-danger bpd" (click)="deleteResource(resource)">Eliminar</button>
         </div>
         <br>
     </div>
@@ -89,7 +89,7 @@
                 </a>
 
             </div>
-            <div class="col-1">
+            <div class="col-1" style="margin-left: 1.5em;">
                 <a
                     href="https://twitter.com/share?url={{url}}&text=Te invito a leer {{resource.title}} en REAS UTPL!!!">
                     <img width="40" height="40"
@@ -98,7 +98,7 @@
                 </a>
 
             </div>
-            <div class="col-1">
+            <div class="col-1" style="margin-left: 1.5em;">
                 <a href="https://api.whatsapp.com/send?text=Te invito a leer {{resource.title}} en {{url}} ">
                     <img width="40" height="40"
                         src="https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN"
@@ -118,15 +118,15 @@
                     <div></div>
                     <div *ngIf="loged==false" class="p-3"><button disabled class="special rounded-pill h6"
                             data-bs-toggle="modal"
-                            data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Calificar&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            data-bs-target="#evaluateResource" style="margin-left: 4em;">&nbsp;&nbsp;&nbsp;&nbsp;Calificar&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     </div>
 
                     <div *ngIf="loged==true" class="p-3"><button class="special rounded-pill h6" data-bs-toggle="modal"
-                            data-bs-target="#evaluateResource">&nbsp;&nbsp;&nbsp;&nbsp;Calificar&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            data-bs-target="#evaluateResource" style="margin-left: 4em;">&nbsp;&nbsp;&nbsp;&nbsp;Calificar&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     </div>
 
                     <div class="p-3"><button (click)="openDownloadTab()"
-                            class="special rounded-pill h6">&nbsp;&nbsp;&nbsp;Descargar&nbsp;&nbsp;&nbsp;</button>
+                            class="special rounded-pill h6" style="margin-left: 1.5em;">&nbsp;&nbsp;&nbsp;Descargar&nbsp;&nbsp;&nbsp;</button>
                     </div>
 
                 </div>
@@ -135,7 +135,7 @@
                     el documento no ha sido cargado correctamente.
                 </div>
             </div>
-            <div class="col-5 mt-2">
+            <div class="col-5">
                 <img src={{resource.banner}} class="img-fluid max-width: 100%; rounded mx-auto" alt="">
             </div>
         </div>
@@ -144,7 +144,7 @@
     <hr>
     <div class="container">
         <h4 class="mb-3">Comentarios</h4>
-        <div class="input-group mb-3">
+        <div class="input-group mb-3" >
             <input type="text" class="form-control" [(ngModel)]="comment.body" placeholder="Escribe un comentario"
                 aria-label="Escribe un comentario" aria-describedby="basic-addon2">
             <div *ngIf="loged==false" class="input-group-append ml-5">
