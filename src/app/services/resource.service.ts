@@ -91,11 +91,17 @@ export class ResourceService {
   addResource(resource: Resources) {
     this.resourcesCollection = this.db.collection(this.COLLECTION_NAME);
     console.log("Mi banner es: "+resource.banner)
-    if(resource.banner.includes("https:")){
-      console.log("Imagen cargada correctamente")
-    }else{
+    if(resource.type == 'Video'){
       resource.banner = this.banners[resource.category]; 
+    }else{
+      if(resource.banner.includes("https:")){
+        console.log("Imagen cargada correctamente")
+      }else{
+        resource.banner = this.banners[resource.category]; 
+      }
     }
+   
+
     resource.creationDate = new Date();
     resource.isPublic = false;
     resource.avgCalification = 0;
