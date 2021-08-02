@@ -13,39 +13,55 @@
 </div>
 
 <div class="row w-100 center">
-    <div class="col-sm-3 ybox">
+    <!-- <div class="col-sm-3 ybox">
         <div class="row">
             <section class="mlf" style="padding:auto; ">
                 <h3 style="font-weight: bold; color: #003F72;">Áreas</h3>
                 <ul *ngFor="let category of categories">
                     <li><a class="text-decoration-none" [routerLink]=""
                             (click)='showResourcesByCategory(category.id)'>{{category.name}}</a></li>
-                    <br>
                 </ul>
             </section>
         </div>
-    </div>
-  <div class="col-sm-9" >
-        <div class="container" style="padding:auto; margin-bottom: 1em;"  >
-            <br>
-            <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos mejor calificados</h2>
-            <ng-image-slider [images]="topRatedResources" [imagePopup]="false"
-                [imageSize]="{width: '300px', height: '200px', space: 25}" (imageClick)="clickImageTopRatedResources($event)"
-                #nav>
-            </ng-image-slider>
-            <br>
-            <br>
-            <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos recientes</h2>
-            <ng-image-slider [images]="resourcesCreationDate" [imagePopup]="false"
-                [imageSize]="{width: '300px', height: '200px', space: 25}" (imageClick)="clickImageCreationDate($event)"
-                #nav>
-            </ng-image-slider>
+    </div> -->
+
+    <nav class="navbar navbar-dark " id="navbarNavDropdown" style="background-color: #003F72;" >
+        <div class="container-fluid" >
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
         </div>
-  </div>
+    </nav> 
+     <div class="collapse" id="navbarToggleExternalContent">
+        <div class=" p-4" style="background-color: #003F72;">
+          <h5 class="text-white h4 navbar-brand">Áreas</h5>
+          <ul class="navbar-nav mr-auto" *ngFor="let category of categories" >
+            <li class="nav-item active"><a class="text-decoration-none nav-link" [routerLink]=""
+                    (click)='showResourcesByCategory(category.id)' style="color: white;">{{category.name}}</a></li>
+        </ul>
+        </div>
+    </div>
+    <div>
+            <div class="container" style="padding:auto; margin-bottom: 1em;"  >
+                <br>
+                <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos mejor calificados</h2>
+                <ng-image-slider [images]="topRatedResources" [imagePopup]="false"
+                    [imageSize]="{width: '300px', height: '200px', space: 25}" (imageClick)="clickImageTopRatedResources($event)"
+                    #nav>
+                </ng-image-slider>
+                <br>
+                <br>
+                <h2 class="redhab" style="margin-left: 0.3em; font-weight: bold;">Recursos recientes</h2>
+                <ng-image-slider [images]="resourcesCreationDate" [imagePopup]="false"
+                    [imageSize]="{width: '300px', height: '200px', space: 25}" (imageClick)="clickImageCreationDate($event)"
+                    #nav>
+                </ng-image-slider>
+            </div>
+    </div>
 </div>
 
 <!-- SLIDER -->
-
+<br>
 <div class="border border-warning" style="padding: auto;">
 <div class="bg-image img-2 centered" style="text-align: center; color: #F3B926;">
     <div class="container">
