@@ -15,7 +15,7 @@ export class ResourcesSearchComponent implements OnInit {
   subscription: Subscription;
   current = []
   result = []
-  search: string;
+  search = "";
   decodeSearch: string;
   filter: string;
 
@@ -26,7 +26,9 @@ export class ResourcesSearchComponent implements OnInit {
       if (params.has('search')) {
         this.search = params.get('search');
         this.decodeSearch = decodeURI(this.search);
+        this.search = this.decodeSearch
       }
+
     });
     this.result = [];
     this.current = []
@@ -51,6 +53,8 @@ export class ResourcesSearchComponent implements OnInit {
       }
       this.result.push(this.current);
     })
+
+
   }
 
   showResource(resource: Resources) {
